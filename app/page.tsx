@@ -7,20 +7,42 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import ParticleBackground from "@/components/ParticleBackground";
 
-// ... keep fadeUp, staggerContainer, textRevealContainer, textRevealItem variants from before ...
+// Animation Variants
 const fadeUp: Variants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } };
 const staggerContainer: Variants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
 const textRevealContainer: Variants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.2 } } };
 const textRevealItem: Variants = { hidden: { opacity: 0, y: 40, filter: "blur(8px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } };
 
-// Data for the minimalist icon wave
+// Data for Icon Wave with routing
 const softwareIcons = [
-  { icon: Video, label: "Premiere" },
-  { icon: PenTool, label: "Photoshop" },
-  { icon: Layout, label: "Figma" },
-  { icon: Code, label: "Next.js" },
-  { icon: Box, label: "Blender" },
-  { icon: Cuboid, label: "Unreal" },
+  { icon: Video, label: "Premiere", href: "/vault" },
+  { icon: PenTool, label: "Photoshop", href: "/vault" },
+  { icon: Layout, label: "Figma", href: "/systems" },
+  { icon: Code, label: "Next.js", href: "/systems" },
+  { icon: Box, label: "Blender", href: "/vault" },
+  { icon: Cuboid, label: "Unreal", href: "/vault" },
+];
+
+// Experience Data
+const experienceData = [
+  {
+    company: "TimePhoria (Skintific Group)",
+    role: "Video Producer & Post-Production Architect",
+    date: "2025 - Present",
+    description: "Architected a custom All-in-One Web-Based Editing Dashboard, successfully reducing per-video post-production time by 20%. Directed and produced retention-driven marketing campaigns."
+  },
+  {
+    company: "PT Pelita Angkasa Motor",
+    role: "Operations Coordinator",
+    date: "2026",
+    description: "Coordinated operational logistics and major vehicle maintenance services, bridging technical execution with effective ground-level management."
+  },
+  {
+    company: "Nore Inovasi",
+    role: "Motion & Graphic Designer",
+    date: "Previous",
+    description: "Designed multi-platform graphic assets and engineered dynamic motion graphics for varying digital client campaigns."
+  }
 ];
 
 export default function Home() {
@@ -32,8 +54,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-[#050505] text-neutral-600 dark:text-neutral-400 font-sans transition-colors duration-300">
       
-      {/* 1. GLASSMORPHISM NAVBAR WITH DROPDOWNS */}
+      {/* 1. GLASSMORPHISM NAVBAR */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 bg-white/60 dark:bg-[#050505]/60 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-800/50 transition-colors">
+        {/* Logo remains safely anchored in top-left UX standard */}
         <div className="text-neutral-900 dark:text-neutral-100 font-semibold tracking-tight">
           Aditya Satria Pratama
         </div>
@@ -41,7 +64,7 @@ export default function Home() {
         <div className="flex items-center gap-8">
           <div className="hidden md:flex items-center gap-8 text-sm font-medium">
             
-            {/* Dropdown 1 */}
+            {/* Dropdown 1: Creative */}
             <div className="group relative py-4">
               <button className="flex items-center gap-1 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors">
                 Creative <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
@@ -55,7 +78,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Dropdown 2 */}
+            {/* Dropdown 2: IT & Dev */}
             <div className="group relative py-4">
               <button className="flex items-center gap-1 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors">
                 IT & Dev <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
@@ -68,7 +91,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Dropdown 3 */}
+            {/* Dropdown 3: 3D */}
             <div className="group relative py-4">
               <button className="flex items-center gap-1 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors">
                 3D <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
@@ -96,6 +119,7 @@ export default function Home() {
         {/* 2. ANTIGRAVITY HERO SECTION */}
         <section className="relative pt-20 md:pt-32 min-h-[75vh] flex flex-col justify-center border border-transparent overflow-visible">
           
+          {/* Background Particles that react to Mouse */}
           <ParticleBackground />
 
           <motion.div 
@@ -104,27 +128,31 @@ export default function Home() {
             animate="visible"
             className="relative z-10 flex flex-col items-start w-full max-w-4xl pointer-events-none"
           >
-            {/* Minimalist Icon Wave (Like Screenshot 2) */}
-            <div className="flex items-center gap-4 mb-16 ml-4">
+            {/* Interactive "Slide & Pop" Icon Wave */}
+            <div className="flex items-center gap-4 mb-16 ml-4 pointer-events-auto h-16">
               {softwareIcons.map((item, index) => {
                 const Icon = item.icon;
-                // Create a slight sine wave positioning effect
                 const translateY = Math.sin(index) * 12; 
                 return (
-                  <motion.div 
+                  <Link 
+                    href={item.href}
                     key={index}
-                    variants={fadeUp}
-                    className="flex items-center justify-center w-14 h-14 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200 dark:border-neutral-800 rounded-full shadow-sm text-neutral-600 dark:text-neutral-400 pointer-events-auto hover:scale-110 hover:text-neutral-900 dark:hover:text-white transition-all duration-300 cursor-pointer"
                     style={{ transform: `translateY(${translateY}px)` }}
-                    title={item.label}
+                    className="group relative flex items-center h-14 w-14 hover:w-36 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border border-neutral-200 dark:border-neutral-800 rounded-full shadow-sm overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   >
-                    <Icon strokeWidth={1.5} className="w-6 h-6" />
-                  </motion.div>
+                    {/* Icon container sliding left */}
+                    <div className="absolute left-0 w-14 h-full flex items-center justify-center transition-transform duration-500 group-hover:-translate-x-1">
+                      <Icon strokeWidth={1.5} className="w-6 h-6 text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors" />
+                    </div>
+                    {/* Text container popping in from right */}
+                    <span className="absolute left-11 whitespace-nowrap text-sm font-medium text-neutral-900 dark:text-white opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+                      {item.label}
+                    </span>
+                  </Link>
                 );
               })}
             </div>
 
-            {/* Antigravity Introduction Text (Like Screenshot 1) */}
             <h1 className="text-4xl md:text-6xl font-medium text-neutral-900 dark:text-neutral-100 tracking-tight leading-[1.1] max-w-3xl">
               Aditya Satria Pratama is a creative technologist, allowing brands to scale in the agent-first era.
             </h1>
@@ -147,63 +175,100 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* ... KEEP YOUR "FEATURED HIGHLIGHTS" & FOOTER SECTION EXACTLY AS THEY WERE ... */}
+        {/* 3. NEW EXPERIENCE SECTION (Inserted before Case Studies) */}
+        <motion.section 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="space-y-12 border-t border-neutral-200 dark:border-neutral-900 pt-32"
+        >
+          <motion.div variants={fadeUp} className="space-y-4">
+            <h2 className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 tracking-tight">Professional Experience</h2>
+            <p className="text-neutral-500 dark:text-neutral-400">A timeline of operational integration and creative execution.</p>
+          </motion.div>
 
-        {/* 3. FEATURED HIGHLIGHTS (THE 10-SECOND HOOK) */}
+          <div className="grid grid-cols-1 gap-8">
+            {experienceData.map((exp, index) => (
+              <motion.div 
+                key={index} 
+                variants={fadeUp}
+                className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12 p-8 bg-neutral-50 dark:bg-neutral-900/30 border border-neutral-200 dark:border-neutral-800 rounded-3xl transition-colors hover:border-neutral-300 dark:hover:border-neutral-700"
+              >
+                <div className="md:w-1/3 space-y-1">
+                  <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{exp.company}</h3>
+                  <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400">{exp.date}</p>
+                </div>
+                <div className="md:w-2/3 space-y-3">
+                  <h4 className="text-xl font-medium text-neutral-800 dark:text-neutral-200">{exp.role}</h4>
+                  <p className="text-base leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    {exp.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* 4. FEATURED HIGHLIGHTS (CASE STUDIES) */}
         <motion.section 
           id="work"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="space-y-12 pt-16"
         >
-          {/* Highlight 1: Systems */}
-          <motion.div variants={fadeUp} className="group relative flex flex-col justify-between p-8 h-[400px] bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
-            <div className="z-10 space-y-3">
-              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">Operational System</h3>
-              <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                Custom Web Dashboard saving TimePhoria editors 20% in post-production time.
-              </p>
-            </div>
-            <Link href="/systems" className="z-10 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:gap-3 transition-all">
-              Read Case Study <ArrowRight className="w-4 h-4" />
-            </Link>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-neutral-200 dark:bg-neutral-800 rounded-xl rotate-12 opacity-50 group-hover:rotate-6 transition-transform duration-500" />
+          <motion.div variants={fadeUp} className="space-y-4">
+            <h2 className="text-3xl font-medium text-neutral-900 dark:text-neutral-100 tracking-tight">Featured Case Studies</h2>
+            <p className="text-neutral-500 dark:text-neutral-400">System architecture, 3D environments, and campaign performance.</p>
           </motion.div>
 
-          {/* Highlight 2: Campaigns */}
-          <motion.div variants={fadeUp} className="group relative flex flex-col justify-between p-8 h-[400px] bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
-            <div className="z-10 space-y-3">
-              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">Performance Campaigns</h3>
-              <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                21.7M+ cumulative views for Google Gemini and OB Herbal using retention-driven hooks.
-              </p>
-            </div>
-            <Link href="/campaigns" className="z-10 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:gap-3 transition-all">
-              Read Case Study <ArrowRight className="w-4 h-4" />
-            </Link>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-neutral-200 dark:bg-neutral-800 rounded-full opacity-50 scale-90 group-hover:scale-100 transition-transform duration-500" />
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <motion.div variants={fadeUp} className="group relative flex flex-col justify-between p-8 h-[400px] bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
+              <div className="z-10 space-y-3">
+                <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">Operational System</h3>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                  Custom Web Dashboard saving TimePhoria editors 20% in post-production time.
+                </p>
+              </div>
+              <Link href="/systems" className="z-10 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:gap-3 transition-all">
+                Read Case Study <ArrowRight className="w-4 h-4" />
+              </Link>
+              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-neutral-200 dark:bg-neutral-800 rounded-xl rotate-12 opacity-50 group-hover:rotate-6 transition-transform duration-500" />
+            </motion.div>
 
-          {/* Highlight 3: 3D / Unreal */}
-          <motion.div variants={fadeUp} className="group relative flex flex-col justify-between p-8 h-[400px] bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
-            <div className="z-10 space-y-3">
-              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">Unreal Engine 3D</h3>
-              <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                Award-winning interactive 3D game developed for final thesis at campus.
-              </p>
-            </div>
-            <Link href="/vault" className="z-10 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:gap-3 transition-all">
-              See Detail <ArrowRight className="w-4 h-4" />
-            </Link>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-neutral-200 dark:bg-neutral-800 rounded-lg -rotate-12 opacity-50 group-hover:rotate-0 transition-transform duration-500" />
-          </motion.div>
+            <motion.div variants={fadeUp} className="group relative flex flex-col justify-between p-8 h-[400px] bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
+              <div className="z-10 space-y-3">
+                <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">Performance Campaigns</h3>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                  21.7M+ cumulative views for Google Gemini and OB Herbal using retention-driven hooks.
+                </p>
+              </div>
+              <Link href="/campaigns" className="z-10 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:gap-3 transition-all">
+                Read Case Study <ArrowRight className="w-4 h-4" />
+              </Link>
+              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-neutral-200 dark:bg-neutral-800 rounded-full opacity-50 scale-90 group-hover:scale-100 transition-transform duration-500" />
+            </motion.div>
 
+            <motion.div variants={fadeUp} className="group relative flex flex-col justify-between p-8 h-[400px] bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
+              <div className="z-10 space-y-3">
+                <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">Unreal Engine 3D</h3>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                  Award-winning interactive 3D game developed for final thesis at campus.
+                </p>
+              </div>
+              <Link href="/vault" className="z-10 inline-flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:gap-3 transition-all">
+                See Detail <ArrowRight className="w-4 h-4" />
+              </Link>
+              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-neutral-200 dark:bg-neutral-800 rounded-lg -rotate-12 opacity-50 group-hover:rotate-0 transition-transform duration-500" />
+            </motion.div>
+          </div>
         </motion.section>
+
       </main>
 
-      {/* 4. FOOTER */}
+      {/* 5. FOOTER */}
       <footer className="border-t border-neutral-200 dark:border-neutral-900 bg-white dark:bg-[#050505] transition-colors">
         <div className="max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
           <div className="space-y-8">
@@ -232,7 +297,7 @@ export default function Home() {
                 <span className="text-neutral-300 dark:text-neutral-800">•</span>
                 
                 <a 
-                  href="https://linkedin.com/in/YOUR-LINKEDIN-URL" 
+                  href="https://linkedin.com/" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors flex items-center gap-2 text-sm font-medium"
