@@ -10,18 +10,29 @@ export default function ParticleBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let particlesArray: Particle[] = [];
     let animationFrameId: number;
 
-    // Use a safe reference object for dimensions that TS can trust inside the class
-    const canvasSize = {
-      width: window.innerWidth,
-      height: window.innerHeight
+    const canvasSize = { width: window.innerWidth, height: window.innerHeight };
+    
+    // Track mouse position
+    const mouse = { x: -1000, y: -1000, radius: 150 };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
     };
+
+    const handleMouseLeave = () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseout', handleMouseLeave);
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -35,33 +46,69 @@ export default function ParticleBackground() {
       x: number;
       y: number;
       size: number;
+      baseX: number;
+      baseY: number;
       speedX: number;
       speedY: number;
       color: string;
+      density: number;
 
       constructor() {
         this.x = Math.random() * canvasSize.width;
         this.y = Math.random() * canvasSize.height;
-        this.size = Math.random() * 1.5 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        // Increased size for better visibility
+        this.size = Math.random() * 2.5 + 1; 
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.density = (Math.random() * 30) + 1;
         
+        // Increased opacity for visibility, kept the Antigravity colors
         const colors = theme === 'dark' 
-          ? ['rgba(255,255,255,0.15)', 'rgba(59,130,246,0.3)', 'rgba(239,68,68,0.2)']
-          : ['rgba(0,0,0,0.1)', 'rgba(37,99,235,0.2)', 'rgba(220,38,38,0.15)'];
+          ? ['rgba(255,255,255,0.4)', 'rgba(59,130,246,0.5)', 'rgba(239,68,68,0.3)']
+          : ['rgba(0,0,0,0.3)', 'rgba(37,99,235,0.4)', 'rgba(220,38,38,0.2)'];
         
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
       update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        // Normal drift
+        this.baseX += this.speedX;
+        this.baseY += this.speedY;
 
-        if (this.x > canvasSize.width) this.x = 0;
-        else if (this.x < 0) this.x = canvasSize.width;
+        // Wrap around
+        if (this.baseX > canvasSize.width) this.baseX = 0;
+        else if (this.baseX < 0) this.baseX = canvasSize.width;
+        if (this.baseY > canvasSize.height) this.baseY = 0;
+        else if (this.baseY < 0) this.baseY = canvasSize.height;
+
+        // Mouse interaction (Repulsion effect)
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (this.y > canvasSize.height) this.y = 0;
-        else if (this.y < 0) this.y = canvasSize.height;
+        if (distance < mouse.radius) {
+          const forceDirectionX = dx / distance;
+          const forceDirectionY = dy / distance;
+          const maxDistance = mouse.radius;
+          const force = (maxDistance - distance) / maxDistance;
+          const directionX = forceDirectionX * force * this.density;
+          const directionY = forceDirectionY * force * this.density;
+          
+          this.x -= directionX;
+          this.y -= directionY;
+        } else {
+          // Return to base position smoothly
+          if (this.x !== this.baseX) {
+            let dx = this.x - this.baseX;
+            this.x -= dx / 10;
+          }
+          if (this.y !== this.baseY) {
+            let dy = this.y - this.baseY;
+            this.y -= dy / 10;
+          }
+        }
       }
 
       draw() {
@@ -75,7 +122,8 @@ export default function ParticleBackground() {
 
     const initParticles = () => {
       particlesArray = [];
-      const numberOfParticles = Math.floor((canvasSize.width * canvasSize.height) / 12000);
+      // Increased density of particles
+      const numberOfParticles = Math.floor((canvasSize.width * canvasSize.height) / 8000);
       for (let i = 0; i < numberOfParticles; i++) {
         particlesArray.push(new Particle());
       }
@@ -96,6 +144,8 @@ export default function ParticleBackground() {
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseout', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
   }, [theme]);
@@ -103,7 +153,7 @@ export default function ParticleBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none z-0"
+      className="absolute inset-0 pointer-events-auto z-0"
       aria-hidden="true"
     />
   );
