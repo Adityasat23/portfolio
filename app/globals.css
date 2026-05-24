@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "tailwindcss";
+
+/* FIX: Tell Tailwind v4 to trigger dark mode when next-themes adds the .dark class */
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   /* Setup custom font */

@@ -30,9 +30,9 @@ export default function PhysicsSkills() {
           Mouse = Matter.Mouse,
           MouseConstraint = Matter.MouseConstraint;
 
-    // 1. Setup Engine & Antigravity (Negative Y gravity)
+    // 1. Setup Engine & Antigravity
     const engine = Engine.create({
-      gravity: { x: 0, y: -0.2, scale: 0.001 } // Negative Y makes them float up!
+      gravity: { x: 0, y: -0.2, scale: 0.001 }
     });
     engineRef.current = engine;
 
@@ -53,29 +53,28 @@ export default function PhysicsSkills() {
     });
     renderRef.current = render;
 
-    // 3. Create Boundaries (Walls, Ceiling, Floor)
+    // 3. Create Boundaries
     const wallOptions = { isStatic: true, render: { visible: false } };
     const ground = Bodies.rectangle(width / 2, height + 50, width, 100, wallOptions);
     const ceiling = Bodies.rectangle(width / 2, -50, width, 100, wallOptions);
     const leftWall = Bodies.rectangle(-50, height / 2, 100, height, wallOptions);
     const rightWall = Bodies.rectangle(width + 50, height / 2, 100, height, wallOptions);
 
-    // 4. Create Skill Pills (Bodies)
-    const bodies = SKILLS.map((_, index) => {
-      // Random starting positions near the bottom
+    // 4. Create Skill Pills
+    const bodies = SKILLS.map(() => {
       const x = Math.random() * (width - 200) + 100;
       const y = height + (Math.random() * 200); 
-      return Bodies.rectangle(x, y, 160, 48, { // Approximate size of the HTML pills
+      return Bodies.rectangle(x, y, 160, 48, {
         chamfer: { radius: 24 },
-        restitution: 0.6, // Bounciness
+        restitution: 0.6,
         frictionAir: 0.01,
-        render: { visible: false } // We hide the canvas objects to show HTML instead
+        render: { visible: false }
       });
     });
 
     Composite.add(engine.world, [ground, ceiling, leftWall, rightWall, ...bodies]);
 
-    // 5. Add Mouse Interaction (Drag them around)
+    // 5. Add Mouse Interaction
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse: mouse,
@@ -85,9 +84,17 @@ export default function PhysicsSkills() {
       }
     });
     Composite.add(engine.world, mouseConstraint);
-
-    // Keep the mouse in sync with scrolling
     render.mouse = mouse;
+
+    // FIX: Bypass TypeScript's missing type definitions using 'as any'
+    const mouseAny = render.mouse as any;
+    
+    // Stop Matter.js from hijacking desktop scroll
+    render.mouse.element.removeEventListener("mousewheel", mouseAny.mousewheel);
+    render.mouse.element.removeEventListener("DOMMouseScroll", mouseAny.mousewheel);
+    
+    // Stop Matter.js from hijacking mobile scroll
+    render.mouse.element.removeEventListener("touchmove", mouseAny.mousemove);
 
     // 6. Sync HTML elements to Physics Bodies
     const htmlElements = Array.from(container.querySelectorAll('.skill-pill')) as HTMLElement[];
@@ -96,7 +103,6 @@ export default function PhysicsSkills() {
       bodies.forEach((body, i) => {
         const el = htmlElements[i];
         if (el) {
-          // Translate and rotate HTML elements to match physics bodies
           el.style.transform = `translate(${body.position.x - 80}px, ${body.position.y - 24}px) rotate(${body.angle}rad)`;
         }
       });
@@ -120,13 +126,12 @@ export default function PhysicsSkills() {
   if (!isClient) return null;
 
   return (
-    <div ref={sceneRef} className="absolute inset-0 z-0 overflow-hidden pointer-events-auto">
-      {/* HTML Elements mapped to physics bodies */}
+    <div ref={sceneRef} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       {SKILLS.map((skill, i) => (
         <div 
           key={i}
-          className="skill-pill absolute top-0 left-0 flex items-center justify-center px-6 h-12 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-full font-medium text-sm text-neutral-900 dark:text-neutral-100 shadow-sm select-none cursor-grab active:cursor-grabbing backdrop-blur-sm"
-          style={{ width: '160px' }} // Fixed width matches the physics body
+          className="skill-pill absolute top-0 left-0 flex items-center justify-center px-6 h-12 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded-full font-medium text-sm text-neutral-900 dark:text-neutral-100 shadow-sm select-none cursor-grab active:cursor-grabbing backdrop-blur-sm pointer-events-auto"
+          style={{ width: '160px' }} 
         >
           {skill}
         </div>
