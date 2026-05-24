@@ -51,8 +51,8 @@ export default function Home() {
 
   useEffect(() => setMounted(true), []);
 
-  return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-[#050505] text-neutral-600 dark:text-neutral-400 font-sans transition-colors duration-300">
+    return (
+    <div className="min-h-screen overflow-x-hidden bg-neutral-50 dark:bg-[#050505] text-neutral-600 dark:text-neutral-400 font-sans transition-colors duration-300">
       
       {/* 1. GLASSMORPHISM NAVBAR */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 bg-white/60 dark:bg-[#050505]/60 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-800/50 transition-colors">
@@ -69,7 +69,7 @@ export default function Home() {
               <button className="flex items-center gap-1 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors">
                 Creative <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 mt-[-8px] w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+              <div className="absolute top-full right-0 mt-[-8px] w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                 <div className="flex flex-col p-2 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 rounded-xl shadow-xl">
                   <Link href="/vault" className="px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg text-neutral-700 dark:text-neutral-300 transition-colors">Video Editing</Link>
                   <Link href="/vault" className="px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg text-neutral-700 dark:text-neutral-300 transition-colors">Design</Link>
@@ -129,7 +129,7 @@ export default function Home() {
             className="relative z-10 flex flex-col items-start w-full max-w-4xl pointer-events-none"
           >
             {/* Interactive "Slide & Pop" Icon Wave */}
-            <div className="flex items-center gap-4 mb-16 ml-4 pointer-events-auto h-16">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-16 ml-0 sm:ml-4 pointer-events-auto min-h-[4rem] w-full max-w-[100vw] pr-4">
               {softwareIcons.map((item, index) => {
                 const Icon = item.icon;
                 const translateY = Math.sin(index) * 12; 
