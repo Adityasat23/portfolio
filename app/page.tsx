@@ -26,10 +26,10 @@ const softwareIcons = [
 // Experience Data from CV
 const experienceData = [
   {
-    company: "TimePhoria - Skintific",
-    role: "Creative Video Producer",
+    company: "TimePhoria",
+    role: "Creative Video Editor",
     date: "Dec 2025 - Present",
-    description: "Architected an internal web-based editing dashboard, reducing per-video post-production time by 20% (60 to 50 min). Produced retention-driven TikTok ad campaigns."
+    description: "Produced retention-driven TikTok ad campaigns. Architected an internal web-based editing dashboard, reducing per-video post-production time by 20% (60 to 50 min)."
   },
   {
     company: "Angkasa Management",
@@ -154,14 +154,14 @@ export default function Home() {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-medium text-neutral-900 dark:text-neutral-100 tracking-tight leading-[1.1] max-w-3xl">
-              Aditya Satria Pratama is a creative technologist, allowing brands to scale in the agent-first era.
+              Aditya Satria Pratama is a Lorem Ipsum.
             </h1>
             
             <motion.p 
               variants={textRevealItem}
               className="mt-6 text-lg md:text-xl text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed"
             >
-              Operating at the intersection of high-end video production, 3D environments, and operational UI/UX efficiency.
+              Lorem ipsum dolor sit amet.
             </motion.p>
             
             <motion.div variants={textRevealItem} className="mt-12 flex flex-col sm:flex-row items-center gap-4 pointer-events-auto">
