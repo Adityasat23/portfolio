@@ -54,7 +54,27 @@ export default function Home() {
       animate="visible"
       className="relative z-10 flex flex-col items-start w-full max-w-4xl pointer-events-none"
     >
+      {/* ... Icon Wave ... */}
+
+      {/* 3. Gunakan t() untuk mengganti teks berdasarkan bahasa */}
+      <h1 className="text-4xl md:text-6xl font-medium text-neutral-900 dark:text-neutral-100 tracking-tight leading-[1.1] max-w-4xl">
+        {t("hero.title")} <br/>
+        <span className="text-neutral-400 dark:text-neutral-500">{t("hero.subtitle")}</span>
+      </h1>
       
+      <motion.p variants={textRevealItem} className="mt-6 text-lg md:text-xl text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed">
+        {t("hero.description")}
+      </motion.p>
+      
+      {/* Call to Action & Download CV */}
+      <motion.div variants={textRevealItem} className="mt-12 flex flex-col sm:flex-row items-center gap-4 pointer-events-auto">
+        <Link href="/work" className="flex items-center justify-center gap-2 px-8 py-4 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-medium rounded-full hover:scale-105 transition-transform duration-300 shadow-lg">
+          {t("btn.explore")}
+        </Link>
+        <a href="/CV_ADITYA_SATRIA_PRATAMA.pdf" download className="flex items-center justify-center gap-2 px-8 py-4 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-md text-neutral-900 dark:text-neutral-100 font-medium rounded-full border border-neutral-300 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800 transition-colors duration-300">
+          {t("btn.downloadCV")} <Download className="w-4 h-4 ml-1" />
+        </a>
+      </motion.div>
     </motion.div>
       
       {/* 1. HERO SECTION (ANTIGRAVITY STYLE + CV DOWNLOAD) */}
