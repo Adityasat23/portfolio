@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer"; // Import Footer
+import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/context/LanguageContext"; // Import Provider Bahasa
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 
@@ -17,9 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans bg-neutral-50 dark:bg-[#050505] overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <Navbar />
-          {children}
-          <Footer /> {/* Footer dipasang di sini */}
+          <LanguageProvider> {/* Bungkus aplikasi dengan LanguageProvider */}
+            <Navbar />
+            {children}
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

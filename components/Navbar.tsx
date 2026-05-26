@@ -3,21 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Globe } from "lucide-react"; // Import ikon Globe
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext"; // Import hook bahasa
 
 export default function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage(); // Gunakan fungsi bahasa
 
   useEffect(() => setMounted(true), []);
 
+  // Menu menggunakan fungsi terjemahan t()
   const navLinks = [
-    { name: "Home", path: "/" }, // Tab Home ditambahkan untuk UX
-    { name: "Work", path: "/work" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: t("nav.home"), path: "/" },
+    { name: t("nav.work"), path: "/work" },
+    { name: t("nav.about"), path: "/about" },
+    { name: t("nav.contact"), path: "/contact" },
   ];
 
   return (
@@ -26,7 +29,7 @@ export default function Navbar() {
         Aditya Satria Pratama
       </Link>
       
-      <div className="flex items-center gap-6 md:gap-10">
+      <div className="flex items-center gap-6 md:gap-8">
         <div className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
             <Link 
@@ -43,10 +46,28 @@ export default function Navbar() {
           ))}
         </div>
 
+        {/* Grup Tombol Kontrol */}
         {mounted && (
-          <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2 rounded-full bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 hover:scale-105 transition-transform shadow-sm">
-            {theme === 'dark' ? <Sun className="w-4 h-4 text-neutral-400" /> : <Moon className="w-4 h-4 text-neutral-600" />}
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Tombol Ganti Bahasa */}
+            <button 
+              onClick={toggleLanguage} 
+              className="flex items-center gap-1 p-2 rounded-full bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 hover:scale-105 transition-transform shadow-sm text-neutral-600 dark:text-neutral-400"
+              title="Change Language"
+            >
+              <Globe className="w-4 h-4" />
+              <span className="text-xs font-bold uppercase">{language}</span>
+            </button>
+
+            {/* Tombol Tema (Dark/Light) */}
+            <button 
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
+              className="p-2 rounded-full bg-white/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 hover:scale-105 transition-transform shadow-sm"
+              title="Toggle Theme"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-neutral-400" /> : <Moon className="w-4 h-4 text-neutral-600" />}
+            </button>
+          </div>
         )}
       </div>
     </nav>
