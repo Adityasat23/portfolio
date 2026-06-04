@@ -39,7 +39,15 @@ const translations = {
     "work.timephoria.title": "TimePhoria Dashboard",
     "work.timephoria.desc": "UI/UX & Frontend Development",
     "work.nore.title": "Nore Inovasi Scaling",
-    "work.nore.desc": "Content Strategy • 310% Growth"
+    "work.nore.desc": "Content Strategy • 310% Growth",
+
+    // Footer
+    "footer.title": "Let's build scalable creative operations.",
+    "footer.rights": "All rights reserved.",
+
+    // Contoh untuk halaman About nanti:
+    // "about.title": "About Me",
+    // "about.desc": "I integrate algorithmic engineering thinking with...",
   },
   id: {
     // Navbar
@@ -75,7 +83,15 @@ const translations = {
     "work.timephoria.title": "Dashboard TimePhoria",
     "work.timephoria.desc": "UI/UX & Pengembangan Frontend",
     "work.nore.title": "Pertumbuhan Nore Inovasi",
-    "work.nore.desc": "Strategi Konten • Pertumbuhan 310%"
+    "work.nore.desc": "Strategi Konten • Pertumbuhan 310%",
+
+    // Footer
+    "footer.title": "Mari bangun operasi kreatif yang terukur.",
+    "footer.rights": "Hak cipta dilindungi undang-undang.",
+
+    // Contoh untuk halaman About nanti:
+    // "about.title": "Tentang Saya",
+    // "about.desc": "Saya mengintegrasikan pemikiran algoritmik rekayasa...",
   }
 };
 
