@@ -6,24 +6,33 @@ type Language = "en" | "id";
 
 const translations = {
   en: {
-    // Navbar
     "nav.home": "Home",
     "nav.work": "Work",
     "nav.about": "About",
     "nav.contact": "Contact",
+    "nav.hire": "Hire me", // NEW
     
     // Home Page - Hero
-    "hero.title": "Hi, I'm Aditya Satria Pratama.",
-    "hero.subtitle": "A Creative Video Producer & Designer with a strong foundation in Informatics.",
-    "hero.desc": "Operating at the intersection of high-end video production, 3D environments, and operational UI/UX efficiency.",
+    "hero.title": "Aditya Satria Pratama — Creative Video Producer & Systems Builder", // NEW
+    "hero.desc": "Bridging high-performance video production with data-driven systems thinking.", // NEW
     "btn.explore": "Explore Selected Works",
     "btn.download": "Download CV",
+    
+    // Stats Strip (NEW)
+    "stat.views": "21.7M+ Views",
+    "stat.growth": "310% Growth",
+    "stat.brands": "Tier-1 Brands",
+
+    // Status Availability (NEW)
+    "status.available": "Open for work",
+    "status.unavailable": "Currently unavailable",
     
     // Home Page - Sections
     "section.exp": "Professional Experience",
     "section.exp.desc": "A timeline of operational integration and creative execution.",
     "section.work": "Selected Works",
     "section.work.viewAll": "View all projects",
+    "section.achievements": "Key Achievements", // NEW
     
     // Experience Data
     "exp.timephoria.role": "Creative Video Producer",
@@ -43,31 +52,36 @@ const translations = {
 
     // Footer
     "footer.title": "Let's build scalable creative operations.",
-    "footer.rights": "All rights reserved.",
-
-    // Contoh untuk halaman About nanti:
-    // "about.title": "About Me",
-    // "about.desc": "I integrate algorithmic engineering thinking with...",
+    "footer.rights": "All rights reserved."
   },
   id: {
-    // Navbar
     "nav.home": "Beranda",
     "nav.work": "Karya",
     "nav.about": "Tentang",
     "nav.contact": "Kontak",
+    "nav.hire": "Rekrut saya", // NEW
     
     // Home Page - Hero
-    "hero.title": "Halo, saya Aditya Satria Pratama.",
-    "hero.subtitle": "Produser Video Kreatif & Desainer dengan fondasi kuat di bidang Informatika.",
-    "hero.desc": "Beroperasi di persimpangan antara produksi video kualitas tinggi, lingkungan 3D, dan efisiensi UI/UX operasional.",
+    "hero.title": "Aditya Satria Pratama — Produser Video Kreatif & Pembangun Sistem", // NEW
+    "hero.desc": "Produksi konten performa tinggi dengan pendekatan berbasis data dan sistem.", // NEW
     "btn.explore": "Jelajahi Karya",
     "btn.download": "Unduh CV",
+    
+    // Stats Strip (NEW)
+    "stat.views": "21.7M+ Penayangan",
+    "stat.growth": "310% Pertumbuhan",
+    "stat.brands": "Klien Tier-1",
+
+    // Status Availability (NEW)
+    "status.available": "Tersedia untuk proyek",
+    "status.unavailable": "Saat ini tidak tersedia",
     
     // Home Page - Sections
     "section.exp": "Pengalaman Profesional",
     "section.exp.desc": "Lini masa integrasi operasional dan eksekusi kreatif.",
     "section.work": "Karya Pilihan",
     "section.work.viewAll": "Lihat semua proyek",
+    "section.achievements": "Pencapaian Utama", // NEW
     
     // Experience Data
     "exp.timephoria.role": "Produser Video Kreatif",
@@ -87,15 +101,10 @@ const translations = {
 
     // Footer
     "footer.title": "Mari bangun operasi kreatif yang terukur.",
-    "footer.rights": "Hak cipta dilindungi undang-undang.",
-
-    // Contoh untuk halaman About nanti:
-    // "about.title": "Tentang Saya",
-    // "about.desc": "Saya mengintegrasikan pemikiran algoritmik rekayasa...",
+    "footer.rights": "Hak cipta dilindungi undang-undang."
   }
 };
 
-// Menggunakan tipe data yang aman
 type TranslationKey = keyof typeof translations.en;
 
 interface LanguageContextType {
@@ -108,15 +117,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
   const [language, setLanguage] = useState<Language>("en");
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "en" ? "id" : "en"));
-  };
-
-  const t = (key: TranslationKey) => {
-    // Fallback yang aman jika kunci bahasa tidak ditemukan
-    return translations[language][key] || key;
-  };
+  const toggleLanguage = () => setLanguage((prev) => (prev === "en" ? "id" : "en"));
+  const t = (key: TranslationKey) => translations[language][key] || key;
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
@@ -127,8 +129,6 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
-  }
+  if (!context) throw new Error("useLanguage must be used within LanguageProvider");
   return context;
 };
