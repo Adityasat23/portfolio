@@ -2,84 +2,124 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Play, LayoutGrid, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Play, LayoutGrid, CheckCircle2, Maximize } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
-// 1. MASTER DATA PROYEK (Bisa Anda pindahkan ke file terpisah nanti)
-const projectsData = {
+// --- MASTER DATA PROJECT BILINGUAL ---
+const projectsData: Record<string, any> = {
   "gemini": {
-    title: "Google Gemini Student Promo x Gracia Caroline",
-    role: "Video Editor",
-    client: "Google Indonesia (via Angkasa Management)",
-    category: "Video & Motion",
-    overview: "Memproduksi konten video promosi untuk Google Gemini. Tantangan utamanya adalah menyeimbangkan aturan brand guideline Google yang ketat (100% compliance) dengan kebutuhan editing gaya TikTok yang viral dan dinamis.",
+    title: { en: "Google Gemini Student Promo", id: "Promo Mahasiswa Google Gemini" },
+    meta: {
+      role: "Video Editor",
+      client: "Google Indonesia",
+      platform: "TikTok & IG Reels",
+      period: "2024",
+      category: "Video & Motion"
+    },
+    heroMedia: { type: 'local', src: '/showreel.mp4', fallback: '/thumb-gemini.jpg' },
     metrics: [
-      { label: "Cumulative Views", value: "21.7M+" },
-      { label: "Brand Compliance", value: "100%" },
-      { label: "Platform", value: "TikTok & IG Reels" }
+      { label: { en: "Cumulative Views", id: "Total Penayangan" }, value: "21.7M+" },
+      { label: { en: "Brand Compliance", id: "Kepatuhan Brand" }, value: "100%" },
+      { label: { en: "Watch-Through", id: "Tingkat Retensi" }, value: "High" }
     ],
-    workflow: [
-      "Menganalisis brand guideline Google untuk batasan warna, font, dan safe-zone.",
-      "Membuat struktur pacing yang memiliki visual hook kuat di 3 detik pertama.",
-      "Menerapkan transisi dinamis dan sound design yang native dengan algoritma TikTok.",
-      "Review berlapis untuk memastikan tidak ada pelanggaran aset korporat."
+    overview: {
+      en: "Produced promotional video content balancing 100% compliance with Google's strict multinational brand guidelines while executing viral-focused edits to maximize watch-through rates.",
+      id: "Memproduksi konten video promosi yang menyeimbangkan kepatuhan 100% pada panduan brand multinasional Google dengan pengeditan bergaya viral untuk memaksimalkan retensi penonton."
+    },
+    execution: [
+      {
+        title: { en: "Hook Optimization", id: "Optimasi Hook 3 Detik" },
+        desc: { en: "Engineered platform-native pacing in the first 3 seconds to prevent scrolling.", id: "Merancang pacing native-platform di 3 detik pertama untuk menghentikan audiens scrolling." },
+        visual: "/thumb-gemini.jpg" // Ganti dengan gambar screenshot timeline/hook
+      },
+      {
+        title: { en: "Brand Safety Review", id: "Review Keamanan Brand" },
+        desc: { en: "Strict color grading and font selection matching Google's exact hex codes.", id: "Color grading dan pemilihan font ketat yang sesuai dengan kode hex resmi Google." },
+        visual: "/thumb-gemini.jpg" // Ganti dengan gambar color palette / guideline
+      }
     ],
-    // Mendukung 'local', 'youtube', 'tiktok', atau 'image'
-    media: [
-      { type: 'local', src: '/gemini-preview.mp4', aspect: 'aspect-[9/16]' }, 
-      // Contoh jika pakai YouTube: { type: 'youtube', src: 'https://www.youtube.com/embed/ID_VIDEO', aspect: 'aspect-video' }
-    ]
+    gallery: [
+      { type: 'image', src: '/thumb-gemini.jpg' },
+      { type: 'image', src: '/thumb-gemini.jpg' }
+    ],
+    nextProject: { id: "timephoria", title: "TimePhoria Dashboard" }
   },
   "timephoria": {
-    title: "TimePhoria Web-Based Editing Dashboard",
-    role: "UI Designer & Developer",
-    client: "Skintific Group",
-    category: "UI/UX & Web",
-    overview: "Merancang dan membangun dashboard internal untuk manajemen aset video dan kustomisasi template. Bertujuan untuk mempercepat alur kerja tim pasca-produksi.",
+    title: { en: "TimePhoria Web Dashboard", id: "Dashboard Web TimePhoria" },
+    meta: {
+      role: "UI Designer & Developer",
+      client: "Skintific Group",
+      platform: "Web Application",
+      period: "2025",
+      category: "UI/UX & Web"
+    },
+    heroMedia: { type: 'image', src: '/thumb-timephoria.jpg' },
     metrics: [
-      { label: "Waktu Edit Berkurang", value: "20%" },
-      { label: "User Adoption", value: "10+ Editors" },
-      { label: "Tech Stack", value: "Next.js, Tailwind" }
+      { label: { en: "Time Reduction", id: "Reduksi Waktu" }, value: "20%" },
+      { label: { en: "Active Editors", id: "Editor Aktif" }, value: "10+" },
+      { label: { en: "Tech Stack", id: "Teknologi" }, value: "Next.js" }
     ],
-    workflow: [
-      "Riset UX dengan mewawancarai 10+ video editor terkait bottleneck saat mencari aset.",
-      "Wireframing dan Prototyping menggunakan Figma dengan sistem desain komponen.",
-      "Pengembangan frontend menggunakan Next.js dan Tailwind CSS.",
-      "Testing dan deployment dashboard ke server internal perusahaan."
+    overview: {
+      en: "Architected and developed an internal web-based editing dashboard for asset management and template customization, enabling the team to scale output without adding headcount.",
+      id: "Membangun dan mengembangkan dashboard editing internal berbasis web untuk manajemen aset, memungkinkan tim untuk meningkatkan output tanpa harus merekrut orang baru."
+    },
+    execution: [
+      {
+        title: { en: "Workflow Audit", id: "Audit Alur Kerja" },
+        desc: { en: "Interviewed editors to find bottlenecks in asset retrieval.", id: "Mewawancarai editor untuk menemukan hambatan utama dalam pencarian aset." },
+        visual: "/thumb-timephoria.jpg" 
+      },
+      {
+        title: { en: "UI Development", id: "Pengembangan UI" },
+        desc: { en: "Built responsive components using Tailwind and React.", id: "Membangun komponen responsif menggunakan Tailwind dan React." },
+        visual: "/thumb-timephoria.jpg"
+      }
     ],
-    media: [
-      { type: 'image', src: '/dashboard-ui.jpg', aspect: 'aspect-video' },
-    ]
+    gallery: [
+      { type: 'image', src: '/thumb-timephoria.jpg' }
+    ],
+    nextProject: { id: "nore", title: "Nore Inovasi Scaling" }
   },
   "nore": {
-    title: "Nore Inovasi Social Media Scaling",
-    role: "Creative Content Specialist",
-    client: "CV. Nore Inovasi",
-    category: "Graphic & Photo",
-    overview: "Mengambil alih akun media sosial klien dan internal perusahaan, mengubah strategi konten organik berbasis data untuk menghasilkan pertumbuhan yang masif.",
+    title: { en: "Nore Inovasi Social Scaling", id: "Pertumbuhan Sosial Nore Inovasi" },
+    meta: {
+      role: "Content Specialist",
+      client: "CV. Nore Inovasi",
+      platform: "Instagram",
+      period: "2024-2025",
+      category: "Graphic & Photo"
+    },
+    heroMedia: { type: 'image', src: '/thumb-nore.jpg' },
     metrics: [
-      { label: "YoY Growth", value: "310.9%" },
-      { label: "Total Views", value: "200K+" },
-      { label: "Link Clicks", value: "+134%" }
+      { label: { en: "YoY Growth", id: "Pertumbuhan YoY" }, value: "310%" },
+      { label: { en: "Total Views", id: "Total Penayangan" }, value: "200K+" },
+      { label: { en: "Profile Clicks", id: "Klik Profil" }, value: "+134%" }
     ],
-    workflow: [
-      "Audit konten sebelumnya menggunakan Google Analytics dan Instagram Insights.",
-      "Mengembangkan pilar konten baru berbasis edukasi dan FOMO.",
-      "Produksi end-to-end (Shooting, Graphic Design, Motion Graphics).",
-      "A/B Testing pada jam tayang dan format copywriting."
+    overview: {
+      en: "Directed multimedia interns and scaled Instagram performance across 2 company accounts through data-driven content strategy.",
+      id: "Mengarahkan mahasiswa magang multimedia dan meningkatkan performa Instagram di 2 akun perusahaan melalui strategi konten berbasis data."
+    },
+    execution: [
+      {
+        title: { en: "Content Pillars", id: "Pilar Konten" },
+        desc: { en: "Established new daily production workflows and quality control.", id: "Membentuk alur kerja produksi harian baru dan kontrol kualitas." },
+        visual: "/thumb-nore.jpg" 
+      }
     ],
-    media: [
-      { type: 'image', src: '/nore-feed.jpg', aspect: 'aspect-square' },
-    ]
+    gallery: [
+      { type: 'image', src: '/thumb-nore.jpg' },
+      { type: 'image', src: '/thumb-nore.jpg' },
+      { type: 'image', src: '/thumb-nore.jpg' }
+    ],
+    nextProject: { id: "gemini", title: "Google Gemini Promo" }
   }
 };
 
 export default function ProjectDetail() {
   const params = useParams();
+  const { language } = useLanguage();
   const projectId = params.id as string;
-  
-  // Mengambil data berdasarkan URL /work/[id]
-  // @ts-ignore
   const project = projectsData[projectId];
 
   if (!project) {
@@ -96,119 +136,138 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-neutral-50 dark:bg-[#050505] text-neutral-600 dark:text-neutral-400 font-sans pt-32 pb-24 px-6">
-      <main className="max-w-6xl mx-auto space-y-16">
+    <div className="min-h-screen overflow-x-hidden bg-neutral-50 dark:bg-[#050505] text-neutral-600 dark:text-neutral-400 font-sans pt-24 pb-24">
+      
+      {/* A. HERO VISUAL (Wajib Ada) */}
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-12">
+        <Link href="/work" className="inline-flex items-center gap-2 text-sm font-medium hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-6">
+          <ArrowLeft className="w-4 h-4" /> {language === 'en' ? 'Back to Archive' : 'Kembali ke Arsip'}
+        </Link>
         
-        {/* 1. HEADER (KEMBALI & JUDUL) */}
-        <div className="space-y-8">
-          <Link href="/work" className="inline-flex items-center gap-2 text-sm font-medium hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-            <ArrowLeft className="w-4 h-4" /> Back to Archive
-          </Link>
-          
-          <div className="space-y-4 max-w-4xl">
-            <div className="inline-block px-3 py-1 bg-neutral-200 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 rounded-full text-xs font-semibold tracking-wide">
-              {project.category}
+        <div className="relative w-full aspect-video md:aspect-[21/9] bg-neutral-200 dark:bg-neutral-900 rounded-[2rem] overflow-hidden shadow-2xl border border-neutral-200/50 dark:border-neutral-800/50">
+          {project.heroMedia.type === 'local' ? (
+            <video src={project.heroMedia.src} autoPlay loop muted playsInline className="w-full h-full object-cover" poster={project.heroMedia.fallback} />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center text-neutral-500">
+              {/* Gunakan tag <Image> Next.js di sini pada production */}
+              Upload {project.heroMedia.src}
             </div>
-            <h1 className="text-4xl md:text-6xl font-medium text-neutral-900 dark:text-neutral-100 tracking-tight leading-tight">
-              {project.title}
-            </h1>
-            <p className="text-lg md:text-xl text-neutral-500 font-medium">
-              Role: <span className="text-neutral-900 dark:text-neutral-200">{project.role}</span> &nbsp;•&nbsp; Client: {project.client}
-            </p>
+          )}
+        </div>
+      </div>
+
+      <main className="max-w-5xl mx-auto px-6 md:px-12 space-y-20">
+        
+        {/* HEADER & META STRIP (B) */}
+        <div className="space-y-8">
+          <h1 className="text-4xl md:text-5xl font-medium text-neutral-900 dark:text-neutral-100 tracking-tight leading-tight">
+            {project.title[language]}
+          </h1>
+          
+          {/* Meta Strip */}
+          <div className="flex flex-wrap items-center gap-y-4 gap-x-8 py-6 border-y border-neutral-200 dark:border-neutral-800 text-sm">
+            <div>
+              <div className="text-neutral-400 uppercase tracking-wider text-[10px] font-bold mb-1">Role</div>
+              <div className="font-medium text-neutral-900 dark:text-neutral-100">{project.meta.role}</div>
+            </div>
+            <div>
+              <div className="text-neutral-400 uppercase tracking-wider text-[10px] font-bold mb-1">Client</div>
+              <div className="font-medium text-neutral-900 dark:text-neutral-100">{project.meta.client}</div>
+            </div>
+            <div>
+              <div className="text-neutral-400 uppercase tracking-wider text-[10px] font-bold mb-1">Platform</div>
+              <div className="font-medium text-neutral-900 dark:text-neutral-100">{project.meta.platform}</div>
+            </div>
+            <div>
+              <div className="text-neutral-400 uppercase tracking-wider text-[10px] font-bold mb-1">Period</div>
+              <div className="font-medium text-neutral-900 dark:text-neutral-100">{project.meta.period}</div>
+            </div>
+            <div>
+              <div className="text-neutral-400 uppercase tracking-wider text-[10px] font-bold mb-1">Category</div>
+              <div className="inline-flex px-2.5 py-1 bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 rounded-md text-xs font-semibold">
+                {project.meta.category}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 border-t border-neutral-200 dark:border-neutral-900 pt-16">
+        {/* IMPACT METRICS (C) */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {project.metrics.map((metric: any, index: number) => (
+            <div key={index} className="p-6 bg-white/60 dark:bg-neutral-900/40 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 rounded-3xl shadow-sm">
+              <div className="text-4xl font-semibold text-neutral-900 dark:text-neutral-100 tracking-tight">{metric.value}</div>
+              <div className="text-sm font-medium text-neutral-500 mt-2">{metric.label[language]}</div>
+            </div>
+          ))}
+        </section>
+
+        {/* OVERVIEW (D) */}
+        <section className="space-y-4 max-w-3xl">
+          <h2 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+             Overview & Challenge
+          </h2>
+          <p className="text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+            {project.overview[language]}
+          </p>
+        </section>
+
+        {/* EXECUTION / PROCESS VISUAL (E) */}
+        <section className="space-y-10 border-t border-neutral-200 dark:border-neutral-800 pt-16">
+          <h2 className="text-2xl font-medium text-neutral-900 dark:text-neutral-100">
+            {language === 'en' ? 'Execution Process' : 'Proses Eksekusi'}
+          </h2>
           
-          {/* 2. KOLOM KIRI (TEKS & ANALISIS) */}
-          <div className="lg:col-span-5 space-y-16">
-            
-            {/* Overview */}
-            <section className="space-y-4">
-              <h2 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-                <LayoutGrid className="w-5 h-5 text-neutral-400" /> Overview
-              </h2>
-              <p className="leading-relaxed text-neutral-600 dark:text-neutral-400">
-                {project.overview}
-              </p>
-            </section>
-
-            {/* Metrics Glassmorphism Grid */}
-            <section className="grid grid-cols-2 gap-4">
-              {project.metrics.map((metric: any, index: number) => (
-                <div key={index} className="p-5 bg-white/60 dark:bg-neutral-900/40 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 rounded-2xl shadow-sm">
-                  <div className="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100">{metric.value}</div>
-                  <div className="text-xs md:text-sm text-neutral-500 mt-1">{metric.label}</div>
-                </div>
-              ))}
-            </section>
-
-            {/* Editing Flow / Workflow */}
-            <section className="space-y-6">
-              <h2 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-neutral-400" /> Execution Flow
-              </h2>
-              <div className="space-y-4">
-                {project.workflow.map((step: string, index: number) => (
-                  <div key={index} className="flex gap-4 items-start">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xs font-medium text-neutral-900 dark:text-neutral-100 mt-0.5">
+          <div className="space-y-16">
+            {project.execution.map((step: any, index: number) => (
+              <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div className={`md:col-span-5 space-y-3 ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
+                  <div className="flex items-center gap-3">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold text-sm">
                       {index + 1}
-                    </div>
-                    <p className="text-sm md:text-base leading-relaxed">{step}</p>
+                    </span>
+                    <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100">{step.title[language]}</h3>
                   </div>
-                ))}
+                  <p className="text-base leading-relaxed pl-11 text-neutral-600 dark:text-neutral-400">{step.desc[language]}</p>
+                </div>
+                
+                {/* Visual Pendamping Langkah (Wajib Ada) */}
+                <div className={`md:col-span-7 aspect-video bg-neutral-200 dark:bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 shadow-md relative ${index % 2 !== 0 ? 'md:order-1' : ''}`}>
+                   <div className="absolute inset-0 flex items-center justify-center text-sm text-neutral-500">Upload {step.visual}</div>
+                </div>
               </div>
-            </section>
-
-          </div>
-
-          {/* 3. KOLOM KANAN (MEDIA VIEWER DINAMIS) */}
-          <div className="lg:col-span-7 space-y-6">
-            {project.media.map((media: any, index: number) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative w-full ${media.aspect} bg-neutral-200 dark:bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-xl group`}
-              >
-                {/* RENDERER MEDIA BERDASARKAN TIPE */}
-                {media.type === 'local' && (
-                  <>
-                    <video src={media.src} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Play className="w-12 h-12 text-white/80" fill="currentColor" />
-                    </div>
-                  </>
-                )}
-
-                {media.type === 'image' && (
-                  // Ganti img dengan <Image fill /> dari Next.js untuk production
-                  <img src={media.src} alt="Project Preview" className="w-full h-full object-cover" />
-                )}
-
-                {media.type === 'youtube' && (
-                  <iframe 
-                    src={media.src} 
-                    title="YouTube video player" 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                    className="w-full h-full"
-                  ></iframe>
-                )}
-
-                {media.type === 'tiktok' && (
-                  // TikTok embed khusus bisa ditaruh di sini
-                  <div className="w-full h-full flex items-center justify-center bg-neutral-800 text-white">
-                    <p className="text-sm">TikTok Embed: {media.src}</p>
-                  </div>
-                )}
-              </motion.div>
             ))}
           </div>
+        </section>
 
+        {/* OUTPUT GALLERY (F) */}
+        <section className="space-y-8 border-t border-neutral-200 dark:border-neutral-800 pt-16">
+          <h2 className="text-2xl font-medium text-neutral-900 dark:text-neutral-100">
+            {language === 'en' ? 'Final Output' : 'Hasil Akhir'}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {project.gallery.map((media: any, index: number) => (
+              <div key={index} className="relative aspect-square md:aspect-[4/5] bg-neutral-200 dark:bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg group">
+                <div className="absolute inset-0 flex items-center justify-center text-sm text-neutral-500">Upload {media.src}</div>
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/10 transition-colors">
+                   <Maximize className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* NEXT PROJECT LINK (G) */}
+        <div className="pt-16 pb-12 flex justify-center">
+          <Link href={`/work/${project.nextProject.id}`} className="group inline-flex flex-col items-center gap-2 text-center">
+            <span className="text-sm font-medium text-neutral-400 uppercase tracking-widest">
+              {language === 'en' ? 'Next Project' : 'Proyek Selanjutnya'}
+            </span>
+            <span className="text-2xl md:text-4xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:opacity-70 transition-opacity flex items-center gap-4">
+              {project.nextProject.title} <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
+            </span>
+          </Link>
         </div>
+
       </main>
     </div>
   );

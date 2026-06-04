@@ -12,12 +12,33 @@ const translations = {
     "nav.contact": "Contact",
     "nav.hire": "Hire me", // NEW
     
+    
     // Home Page - Hero
     "hero.title": "Aditya Satria Pratama — Creative Video Producer & Systems Builder", // NEW
     "hero.desc": "Bridging high-performance video production with data-driven systems thinking.", // NEW
     "btn.explore": "Explore Selected Works",
     "btn.download": "Download CV",
+    // About Page
+    "about.role": "Creative Technologist",
+    "about.intro": "I'm a creative technologist bridging high-performance video production with systems thinking. My background in Informatics shapes how I approach editing timelines — not just as aesthetic choices, but as measurable audience retention structures that drive business conversion.",
+    "about.skills": "Skills & Tools",
+    "about.org": "Leadership & Organizations",
+    "about.edu": "Education & Achievements",
+    "about.edu.thesis": "Thesis: Developed an interactive 3D game in Unreal Engine — the first Unreal Engine based thesis implementation in the faculty history.",
     
+    // Contact Page
+    "contact.headline": "Let's work together — I'm available for full-time roles and freelance projects.",
+    "contact.form.name": "Name",
+    "contact.form.email": "Email",
+    "contact.form.type": "Collaboration Type",
+    "contact.form.type.fulltime": "Full-time Role",
+    "contact.form.type.freelance": "Freelance Project",
+    "contact.form.type.collab": "Collaboration",
+    "contact.form.type.other": "Other",
+    "contact.form.message": "Message",
+    "contact.form.submit": "Send Message",
+    "contact.reply": "I typically reply within 24–48 hours.",
+
     // Stats Strip (NEW)
     "stat.views": "21.7M+ Views",
     "stat.growth": "310% Growth",
@@ -82,6 +103,27 @@ const translations = {
     "section.work": "Karya Pilihan",
     "section.work.viewAll": "Lihat semua proyek",
     "section.achievements": "Pencapaian Utama", // NEW
+
+    // About Page
+    "about.role": "Teknolog Kreatif",
+    "about.intro": "Saya adalah seorang teknolog kreatif yang menjembatani produksi video performa tinggi dengan pemikiran sistem. Latar belakang saya di bidang Informatika membentuk cara saya menyusun timeline editing — bukan sekadar pilihan estetika, melainkan sebagai struktur retensi audiens terukur yang mendorong konversi bisnis.",
+    "about.skills": "Keahlian & Alat",
+    "about.org": "Kepemimpinan & Organisasi",
+    "about.edu": "Pendidikan & Pencapaian",
+    "about.edu.thesis": "Tugas Akhir: Mengembangkan purwarupa game interaktif 3D menggunakan Unreal Engine—menjadi implementasi tesis berbasis Unreal Engine pertama dalam sejarah fakultas.",
+    
+    // Contact Page
+    "contact.headline": "Mari bekerja sama — Tersedia untuk posisi full-time maupun proyek freelance.",
+    "contact.form.name": "Nama",
+    "contact.form.email": "Email",
+    "contact.form.type": "Tipe Kolaborasi",
+    "contact.form.type.fulltime": "Posisi Full-time",
+    "contact.form.type.freelance": "Proyek Freelance",
+    "contact.form.type.collab": "Kolaborasi",
+    "contact.form.type.other": "Lainnya",
+    "contact.form.message": "Pesan",
+    "contact.form.submit": "Kirim Pesan",
+    "contact.reply": "Saya biasanya membalas dalam waktu 24–48 jam.",
     
     // Experience Data
     "exp.timephoria.role": "Produser Video Kreatif",
