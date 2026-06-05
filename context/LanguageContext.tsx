@@ -39,12 +39,12 @@ const translations = {
     "contact.form.submit": "Send Message",
     "contact.reply": "I typically reply within 24–48 hours.",
 
-    // Stats Strip (NEW)
-    "stat.views": "21.7M+ Views",
-    "stat.growth": "310% Growth",
+// Stats Strip
+    "stat.views": "Views",
+    "stat.growth": "Growth",
     "stat.brands": "Tier-1 Brands",
 
-    // Status Availability (NEW)
+    // Status Availability
     "status.available": "Open for work",
     "status.unavailable": "Currently unavailable",
     
@@ -88,12 +88,12 @@ const translations = {
     "btn.explore": "Jelajahi Karya",
     "btn.download": "Unduh CV",
     
-    // Stats Strip (NEW)
-    "stat.views": "21.7M+ Penayangan",
-    "stat.growth": "310% Pertumbuhan",
+// Stats Strip
+    "stat.views": "Penayangan",
+    "stat.growth": "Pertumbuhan",
     "stat.brands": "Klien Tier-1",
 
-    // Status Availability (NEW)
+    // Status Availability
     "status.available": "Tersedia untuk proyek",
     "status.unavailable": "Saat ini tidak tersedia",
     

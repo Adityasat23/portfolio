@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-neutral-50 dark:bg-[#050505] text-neutral-600 dark:text-neutral-400 font-sans transition-colors duration-300">
       
-      <main className="max-w-7xl mx-auto px-6 md:px-12 pb-24 space-y-32">
+      <main className="max-w-7xl mx-auto px-6 md:px-12 pb-24 space-y-20">
         
         {/* 1. HERO SECTION DENGAN SHOWREEL */}
         <section className="relative pt-32 md:pt-48 min-h-[85vh] flex flex-col justify-center border border-transparent overflow-hidden rounded-b-[3rem]">
