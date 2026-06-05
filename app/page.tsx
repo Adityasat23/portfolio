@@ -55,8 +55,8 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-6 md:px-12 pb-24 space-y-20">
         
         {/* 1. HERO SECTION DENGAN SHOWREEL */}
-        <section className="relative pt-32 md:pt-48 min-h-[85vh] flex flex-col justify-center border border-transparent overflow-hidden rounded-b-[3rem]">
-          
+        <section className="relative pt-32 md:pt-48 pb-24 min-h-[85vh] flex flex-col justify-center border border-transparent overflow-hidden rounded-b-[3rem]">
+
           {/* Autoplay Showreel Video (Muted Loop) */}
           <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
             {/* Hapus komentar di bawah ini setelah Anda memasukkan showreel.mp4 ke folder public */}
