@@ -41,7 +41,7 @@ const translations = {
 
 // Stats Strip
     "stat.views": "Views",
-    "stat.growth": "Growth",
+    "stat.growth": "Influencer",
     "stat.brands": "Tier-1 Brands",
 
     // Status Availability
@@ -90,7 +90,7 @@ const translations = {
     
 // Stats Strip
     "stat.views": "Penayangan",
-    "stat.growth": "Pertumbuhan",
+    "stat.growth": "Influencer",
     "stat.brands": "Klien Tier-1",
 
     // Status Availability

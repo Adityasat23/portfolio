@@ -102,7 +102,7 @@ export default function Home() {
                 <Link href="/work" className="flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-medium rounded-full hover:scale-105 transition-transform shadow-lg">
                   {t("btn.explore" as any)}
                 </Link>
-                <a href="/CV_ADITYA_SATRIA_PRATAMA_2026.pdf" download className="flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-md text-neutral-900 dark:text-neutral-100 font-medium rounded-full border border-neutral-300 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800 transition-colors">
+                <a href="/CV ADITYA SATRIA PRATAMA 2026.pdf" download className="flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-md text-neutral-900 dark:text-neutral-100 font-medium rounded-full border border-neutral-300 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800 transition-colors">
                   {t("btn.download" as any)} <Download className="w-4 h-4 ml-1" />
                 </a>
               </div>
