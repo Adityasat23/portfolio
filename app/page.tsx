@@ -102,9 +102,15 @@ export default function Home() {
                 <Link href="/work" className="flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-medium rounded-full hover:scale-105 transition-transform shadow-lg">
                   {t("btn.explore" as any)}
                 </Link>
-                <a href="/cv-aditya.pdf" download className="flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-md text-neutral-900 dark:text-neutral-100 font-medium rounded-full border border-neutral-300 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800 transition-colors">
-                  {t("btn.download" as any)} <Download className="w-4 h-4 ml-1" />
-                </a>
+              <a 
+                href="/cv-aditya.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                download="CV_Aditya_Satria_Pratama.pdf" 
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-medium rounded-full hover:scale-105 transition-transform duration-300 shadow-md"
+              >
+                <Download className="w-4 h-4" /> {t("btn.download" as any)}
+              </a>
               </div>
 
               {/* NEW: Stats Strip */}
