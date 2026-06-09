@@ -15,7 +15,7 @@ export default function WorkPage() {
 
   // Data ini sebaiknya sama dengan data di halaman Detail nantinya
   const projects = [
-    { id: "gemini", title: t("work.gemini.title" as any), category: "Video & Motion", role: "Video Editor", metrics: "21.7M+ Views", thumb: "/thumb-gemini.jpg" },
+    { id: "gemini", title: t("work.gemini.title" as any), category: "Video & Motion", role: "Video Editor", metrics: "21.7M+ Views", thumb: "/thumb-gemini45.png" },
     { id: "timephoria", title: t("work.timephoria.title" as any), category: "UI/UX & Web", role: "UI Designer & Dev", metrics: "20% Efficiency", thumb: "/thumb-timephoria.jpg" },
     { id: "nore", title: t("work.nore.title" as any), category: "Graphic & Photo", role: "Content Specialist", metrics: "310% Growth", thumb: "/thumb-nore.jpg" },
     { id: "unreal", title: "Interactive 3D Game", category: "3D Design", role: "UE5 Developer", metrics: "Gold Medalist", thumb: "/thumb-unreal.jpg" }

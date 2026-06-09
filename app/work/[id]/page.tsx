@@ -18,7 +18,7 @@ const projectsData: Record<string, any> = {
       period: "2024",
       category: "Video & Motion"
     },
-    heroMedia: { type: 'local', src: '/showreel.mp4', fallback: '/thumb-gemini.jpg' },
+    heroMedia: { type: 'local', src: '/showreel.mp4', fallback: '/public/thumb-gemini45.png' },
     metrics: [
       { label: { en: "Cumulative Views", id: "Total Penayangan" }, value: "21.7M+" },
       { label: { en: "Brand Compliance", id: "Kepatuhan Brand" }, value: "100%" },
@@ -251,7 +251,7 @@ export default function ProjectDetail() {
   
                 {/* MASUKKAN IMAGE DI SINI, HAPUS DIV TULISAN UPLOAD SEBELUMNYA */}
                 <Image 
-                  src={media.src="/thumb-gemini45.png" } 
+                  src={media.src} 
                   alt="Gallery Output" 
                   fill 
                   className="object-cover"
