@@ -149,8 +149,7 @@ export default function Home() {
                   {/* Brand Logo Box */}
                   <div className="w-12 h-12 flex-shrink-0 bg-neutral-100 dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700 flex items-center justify-center overflow-hidden">
                      {/* Ganti div kosongan ini dengan Image setelah upload logo perusahaan */}
-                     <span className="text-[10px] text-neutral-400 text-center leading-tight">Logo<br/>Brand</span>
-                  </div>
+                    <Image src={exp.logo} alt={exp.company} fill className="object-contain p-2" /></div>
                   <div className="space-y-1">
                     <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{exp.company}</h3>
                     <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400">{exp.date}</p>

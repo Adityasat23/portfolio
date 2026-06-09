@@ -36,7 +36,7 @@ const projectsData: Record<string, any> = {
       {
         title: { en: "Brand Safety Review", id: "Review Keamanan Brand" },
         desc: { en: "Strict color grading and font selection matching Google's exact hex codes.", id: "Color grading dan pemilihan font ketat yang sesuai dengan kode hex resmi Google." },
-        visual: "/thumb-gemini.jpg" // Ganti dengan gambar color palette / guideline
+        visual: "/thumb-gemini.webp.png" // Ganti dengan gambar color palette / guideline
       }
     ],
     gallery: [
