@@ -43,9 +43,8 @@ export default function AboutPage() {
           
           {/* FOTO PROFIL (Wajib ganti src dengan foto Anda di folder public) */}
           <motion.div variants={fadeUp} className="md:col-span-4 aspect-[4/5] relative rounded-3xl overflow-hidden bg-neutral-200 dark:bg-neutral-900 border border-neutral-200/50 dark:border-neutral-800/50 shadow-xl">
-             {/* <Image src="/foto-aditya.jpg" alt="Aditya Satria Pratama" fill className="object-cover" /> */}
-             <div className="absolute inset-0 flex items-center justify-center text-sm text-neutral-500">Upload foto-aditya.jpg</div>
-          </motion.div>
+             {<Image src="/foto-aditya.webp" alt="Aditya Satria Pratama" fill className="object-cover" />}
+             </motion.div>
           
           <motion.div variants={fadeUp} className="md:col-span-8 space-y-6">
             <div className="space-y-4">
