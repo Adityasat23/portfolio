@@ -147,9 +147,14 @@ export default function Home() {
                 {/* Brand Logo & Meta */}
                 <div className="md:w-1/3 flex items-start gap-4">
                   {/* Brand Logo Box */}
-                  <div className="w-12 h-12 flex-shrink-0 bg-neutral-100 dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700 flex items-center justify-center overflow-hidden">
-                     {/* Ganti div kosongan ini dengan Image setelah upload logo perusahaan */}
-                    <Image src={exp.logo} alt={exp.company} fill className="object-contain p-2" /></div>
+                  <div className="relative w-12 h-12 flex-shrink-0 bg-white rounded-xl border border-neutral-200 dark:border-neutral-700 flex items-center justify-center overflow-hidden">
+                    <Image 
+                      src={exp.logo} 
+                      alt={exp.company} 
+                      fill
+                      className="object-cover" // Ganti dari 'object-contain p-2' menjadi 'object-cover'
+                    />
+                  </div>
                   <div className="space-y-1">
                     <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{exp.company}</h3>
                     <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400">{exp.date}</p>

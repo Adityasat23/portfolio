@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 const categories = ["All", "Video & Motion", "Graphic & Photo", "UI/UX & Web", "3D Design"];
@@ -68,9 +69,14 @@ export default function WorkPage() {
                     
                     {/* Wajib Ganti dengan Image Komponen Next.js Nanti */}
                     {/* <Image src={project.thumb} alt={project.title} fill className="object-cover" /> */}
-                    <span className="text-sm text-neutral-500 absolute">Upload {project.thumb}</span>
-                    
-                    {/* Badge Kategori di dalam gambar */}
+                    {/* Wajib Ganti dengan Image Komponen Next.js Nanti */}
+                    <Image 
+                      src={project.thumb} 
+                      alt={project.title as string} 
+                      fill 
+                      className="object-cover" 
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                     <div className="absolute top-4 left-4 px-3 py-1 bg-black/60 text-white text-xs font-medium rounded-full backdrop-blur-md">
                       {project.category}
                     </div>

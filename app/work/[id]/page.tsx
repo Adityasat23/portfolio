@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Play, LayoutGrid, CheckCircle2, Maximize } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 // --- MASTER DATA PROJECT BILINGUAL ---
@@ -247,7 +248,14 @@ export default function ProjectDetail() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {project.gallery.map((media: any, index: number) => (
               <div key={index} className="relative aspect-square md:aspect-[4/5] bg-neutral-200 dark:bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg group">
-                <div className="absolute inset-0 flex items-center justify-center text-sm text-neutral-500">Upload {media.src}</div>
+  
+                {/* MASUKKAN IMAGE DI SINI, HAPUS DIV TULISAN UPLOAD SEBELUMNYA */}
+                <Image 
+                  src={media.src="/thumb-gemini45.png" } 
+                  alt="Gallery Output" 
+                  fill 
+                  className="object-cover"
+                />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/10 transition-colors">
                    <Maximize className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
