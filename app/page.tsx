@@ -27,7 +27,7 @@ export default function Home() {
 
   const experienceData = [
     {
-      company: "TimePhoria - Skintific",
+      company: "TimePhoria",
       role: t("exp.timephoria.role" as any),
       date: "Dec 2025 - Present",
       description: t("exp.timephoria.desc" as any),

@@ -44,10 +44,10 @@ const projectsData: Record<string, any> = {
       { type: 'image', src: '/thumb-gemini.jpg' },
       { type: 'image', src: '/thumb-gemini.jpg' }
     ],
-    nextProject: { id: "timephoria", title: "TimePhoria Dashboard" }
+    nextProject: { id: "timephoria", title: "TimePhoria Editor Tools" }
   },
   "timephoria": {
-    title: { en: "TimePhoria Web Dashboard", id: "Dashboard Web TimePhoria" },
+    title: { en: "TimePhoria Editor Tools", id: "TimePhoria Editor Tools" },
     meta: {
       role: "UI Designer & Developer",
       client: "Skintific Group",
