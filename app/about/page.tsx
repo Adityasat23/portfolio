@@ -75,7 +75,7 @@ export default function AboutPage() {
             {/* Download CV Button dipindah ke atas */}
             <div className="pt-2">
                 <a 
-                href="/cv-aditya.pdf" 
+                href="/documents/cv-aditya.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 download="CV_Aditya_Satria_Pratama.pdf" 

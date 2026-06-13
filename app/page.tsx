@@ -31,21 +31,21 @@ export default function Home() {
       role: t("exp.timephoria.role" as any),
       date: "Dec 2025 - Present",
       description: t("exp.timephoria.desc" as any),
-      logo: "/LOGOTPH.png" // Siapkan logo di folder public
+      logo: "/logos/logo-timephoria.png" // Siapkan logo di folder public
     },
     {
       company: "Angkasa Management",
       role: t("exp.angkasa.role" as any),
       date: "Sept 2024 - Present",
       description: t("exp.angkasa.desc" as any),
-      logo: "/LOGOANGKASA.png"
+      logo: "/logos/logo-angkasa.png"
     },
     {
       company: "CV. Nore Inovasi",
       role: t("exp.nore.role" as any),
       date: "Sept 2024 - Nov 2025",
       description: t("exp.nore.desc" as any),
-      logo: "/LOGONORE.png"
+      logo: "/logos/logo-nore.png"
     }
   ];
 
@@ -103,7 +103,7 @@ export default function Home() {
                   {t("btn.explore" as any)}
                 </Link>
               <a 
-                href="/cv-aditya.pdf" 
+                href="/documents/cv-aditya.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 download="CV_Aditya_Satria_Pratama.pdf" 
@@ -188,7 +188,7 @@ export default function Home() {
               <Link href="/work/gemini" className="block space-y-4">
                 <div className="aspect-[4/5] bg-neutral-200 dark:bg-neutral-800 border border-neutral-200/50 dark:border-neutral-800/50 rounded-3xl overflow-hidden relative shadow-lg transition-transform duration-500 group-hover:-translate-y-2">
                   {/* WAJIB GANTI src DI BAWAH INI DENGAN GAMBAR ASLI ANDA */}
-                  {<Image src="/thumb-gemini.webp.png" alt="Google Gemini" fill className="object-cover" />}
+                  {<Image src="/thumbnails/thumb-gemini-916.webp" alt="Google Gemini" fill className="object-cover" />}
                   {/* Category Badge & 1 Impact Metric */}
                   <div className="absolute top-4 left-4 flex gap-2">
                     <span className="px-3 py-1 bg-black/60 text-white text-xs font-medium rounded-full backdrop-blur-md">Video Editor</span>
