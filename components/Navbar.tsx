@@ -15,9 +15,10 @@ export default function Navbar() {
 
   useEffect(() => setMounted(true), []);
 
-  const navLinks = [
+const navLinks = [
     { name: t("nav.home" as any), path: "/" },
     { name: t("nav.work" as any), path: "/work" },
+    { name: "Gallery", path: "/gallery" }, // <--- TAMBAHKAN INI
     { name: t("nav.about" as any), path: "/about" },
     { name: t("nav.contact" as any), path: "/contact" },
   ];

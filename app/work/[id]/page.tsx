@@ -9,18 +9,13 @@ import { useLanguage } from "@/context/LanguageContext";
 
 // --- MASTER DATA PROJECT BILINGUAL ---
 const projectsData: Record<string, any> = {
+  // 1. GOOGLE GEMINI
   "gemini": {
     title: { en: "Google Gemini Student Promo", id: "Promo Mahasiswa Google Gemini" },
-    meta: {
-      role: "Video Editor",
-      client: "Google Indonesia",
-      platform: "TikTok & IG Reels",
-      period: "2024",
-      category: "Video & Motion"
-    },
-    heroMedia: { type: 'local', src: '/showreel.mp4', fallback: '/public/thumb-gemini45.png' },
+    meta: { role: "Video Editor", client: "Google Indonesia", platform: "TikTok & IG Reels", period: "2024", category: "Video & Motion" },
+    heroMedia: { type: 'local', src: '/hero-gemini.mp4', fallback: '/thumb-gemini.webp' },
     metrics: [
-      { label: { en: "Cumulative Views", id: "Total Penayangan" }, value: "21.7M+" },
+      { label: { en: "Total Views", id: "Total Penayangan" }, value: "21.7M+" },
       { label: { en: "Brand Compliance", id: "Kepatuhan Brand" }, value: "100%" },
       { label: { en: "Watch-Through", id: "Tingkat Retensi" }, value: "High" }
     ],
@@ -32,30 +27,23 @@ const projectsData: Record<string, any> = {
       {
         title: { en: "Hook Optimization", id: "Optimasi Hook 3 Detik" },
         desc: { en: "Engineered platform-native pacing in the first 3 seconds to prevent scrolling.", id: "Merancang pacing native-platform di 3 detik pertama untuk menghentikan audiens scrolling." },
-        visual: "/thumb-gemini.jpg" // Ganti dengan gambar screenshot timeline/hook
+        visual: "/proses-gemini-1.webp" 
       },
       {
         title: { en: "Brand Safety Review", id: "Review Keamanan Brand" },
         desc: { en: "Strict color grading and font selection matching Google's exact hex codes.", id: "Color grading dan pemilihan font ketat yang sesuai dengan kode hex resmi Google." },
-        visual: "/thumb-gemini.webp.png" // Ganti dengan gambar color palette / guideline
+        visual: "/proses-gemini-2.webp" 
       }
     ],
-    gallery: [
-      { type: 'image', src: '/thumb-gemini.jpg' },
-      { type: 'image', src: '/thumb-gemini.jpg' }
-    ],
-    nextProject: { id: "timephoria", title: "TimePhoria Editor Tools" }
+    gallery: [ { type: 'image', src: '/thumb-gemini.webp' } ],
+    nextProject: { id: "timephoria", title: "TimePhoria Dashboard" }
   },
+
+  // 2. TIMEPHORIA
   "timephoria": {
-    title: { en: "TimePhoria Editor Tools", id: "TimePhoria Editor Tools" },
-    meta: {
-      role: "UI Designer & Developer",
-      client: "Skintific Group",
-      platform: "Web Application",
-      period: "2025",
-      category: "UI/UX & Web"
-    },
-    heroMedia: { type: 'image', src: '/thumb-timephoria.jpg' },
+    title: { en: "TimePhoria Web Dashboard", id: "Dashboard Web TimePhoria" },
+    meta: { role: "UI Designer & Developer", client: "Skintific Group", platform: "Web Application", period: "2025", category: "UI/UX & Web" },
+    heroMedia: { type: 'image', src: '/thumb-timephoria.webp' },
     metrics: [
       { label: { en: "Time Reduction", id: "Reduksi Waktu" }, value: "20%" },
       { label: { en: "Active Editors", id: "Editor Aktif" }, value: "10+" },
@@ -69,50 +57,90 @@ const projectsData: Record<string, any> = {
       {
         title: { en: "Workflow Audit", id: "Audit Alur Kerja" },
         desc: { en: "Interviewed editors to find bottlenecks in asset retrieval.", id: "Mewawancarai editor untuk menemukan hambatan utama dalam pencarian aset." },
-        visual: "/thumb-timephoria.jpg" 
-      },
-      {
-        title: { en: "UI Development", id: "Pengembangan UI" },
-        desc: { en: "Built responsive components using Tailwind and React.", id: "Membangun komponen responsif menggunakan Tailwind dan React." },
-        visual: "/thumb-timephoria.jpg"
+        visual: "/proses-timephoria-1.webp" 
       }
     ],
-    gallery: [
-      { type: 'image', src: '/thumb-timephoria.jpg' }
-    ],
+    gallery: [ { type: 'image', src: '/thumb-timephoria.webp' } ],
     nextProject: { id: "nore", title: "Nore Inovasi Scaling" }
   },
+
+  // 3. NORE INOVASI
   "nore": {
-    title: { en: "Nore Inovasi Social Scaling", id: "Pertumbuhan Sosial Nore Inovasi" },
-    meta: {
-      role: "Content Specialist",
-      client: "CV. Nore Inovasi",
-      platform: "Instagram",
-      period: "2024-2025",
-      category: "Graphic & Photo"
-    },
-    heroMedia: { type: 'image', src: '/thumb-nore.jpg' },
+    title: { en: "CV. Nore Inovasi Social Scaling", id: "Pertumbuhan Sosial Nore Inovasi" },
+    meta: { role: "Content Specialist", client: "CV. Nore Inovasi", platform: "Instagram", period: "2024-2025", category: "Content Strategy" },
+    heroMedia: { type: 'image', src: '/thumb-nore.webp' },
     metrics: [
       { label: { en: "YoY Growth", id: "Pertumbuhan YoY" }, value: "310%" },
-      { label: { en: "Total Views", id: "Total Penayangan" }, value: "200K+" },
-      { label: { en: "Profile Clicks", id: "Klik Profil" }, value: "+134%" }
+      { label: { en: "Total Views", id: "Total Penayangan" }, value: "393K+" },
+      { label: { en: "Link Clicks", id: "Klik Tautan" }, value: "+348%" }
     ],
     overview: {
-      en: "Directed multimedia interns and scaled Instagram performance across 2 company accounts through data-driven content strategy.",
-      id: "Mengarahkan mahasiswa magang multimedia dan meningkatkan performa Instagram di 2 akun perusahaan melalui strategi konten berbasis data."
+      en: "Directed multimedia interns and scaled Instagram performance across multiple company accounts through data-driven content strategy.",
+      id: "Mengarahkan mahasiswa magang multimedia dan meningkatkan performa Instagram di berbagai akun perusahaan melalui strategi konten berbasis data."
     },
     execution: [
       {
-        title: { en: "Content Pillars", id: "Pilar Konten" },
-        desc: { en: "Established new daily production workflows and quality control.", id: "Membentuk alur kerja produksi harian baru dan kontrol kualitas." },
-        visual: "/thumb-nore.jpg" 
+        title: { en: "Data-Driven Strategy", id: "Strategi Berbasis Data" },
+        desc: { en: "Analyzed performance data to identify growth opportunities and establish new daily production workflows.", id: "Menganalisis data performa untuk mengidentifikasi peluang pertumbuhan dan membentuk alur kerja produksi harian baru." },
+        visual: "/proses-nore-1.webp" 
       }
     ],
-    gallery: [
-      { type: 'image', src: '/thumb-nore.jpg' },
-      { type: 'image', src: '/thumb-nore.jpg' },
-      { type: 'image', src: '/thumb-nore.jpg' }
+    gallery: [ { type: 'image', src: '/thumb-nore.webp' } ],
+    nextProject: { id: "bem", title: "BEM KBM Polines" }
+  },
+
+  // 4. BEM KBM POLINES (Karya Masterpiece Baru)
+  "bem": {
+    title: { en: "BEM KBM Polines Digital Scaling", id: "Pertumbuhan Digital BEM KBM Polines" },
+    meta: { role: "Media Director", client: "BEM KBM Polines", platform: "IG, TikTok, LinkedIn", period: "2024-2025", category: "Content Strategy" },
+    heroMedia: { type: 'image', src: '/thumb-bem.webp' },
+    metrics: [
+      { label: { en: "Total Views", id: "Total Penayangan" }, value: "5M+" },
+      { label: { en: "New Followers", id: "Pengikut Baru" }, value: "4.2K+" },
+      { label: { en: "Total Likes", id: "Total Suka" }, value: "145K+" }
     ],
+    overview: {
+      en: "Led the communication strategy for an organization serving 4,500+ students. Modernized fragmented digital channels and utilized FOMO-driven content calendars to achieve explosive, record-breaking growth.",
+      id: "Memimpin strategi komunikasi untuk organisasi yang melayani 4.500+ mahasiswa. Memodernisasi kanal digital yang terpecah dan menggunakan kalender konten berbasis FOMO untuk mencapai pertumbuhan yang masif."
+    },
+    execution: [
+      {
+        title: { en: "Ecosystem Expansion", id: "Ekspansi Ekosistem" },
+        desc: { en: "Established a consistent brand identity and launched 3 new channels (LinkedIn, Spotify, WhatsApp).", id: "Membangun identitas brand yang konsisten dan meluncurkan 3 kanal baru (LinkedIn, Spotify, WhatsApp)." },
+        visual: "/proses-bem-1.webp"
+      },
+      {
+        title: { en: "FOMO Marketing", id: "Pemasaran FOMO" },
+        desc: { en: "Designed high-engagement daily content driving record-breaking interactions among students.", id: "Merancang konten harian berinteraksi tinggi yang memecahkan rekor interaksi di kalangan mahasiswa." },
+        visual: "/proses-bem-2.webp"
+      }
+    ],
+    gallery: [ { type: 'image', src: '/thumb-bem.webp' } ],
+    nextProject: { id: "freelance-photo", title: "Event & Freelance Content" }
+  },
+
+  // 5. EVENT & FREELANCE COLLECTIVE (Menampung GMD, ECC, Effection)
+  "freelance-photo": {
+    title: { en: "Event & Community Content Strategy", id: "Strategi Konten Event & Komunitas" },
+    meta: { role: "Content Specialist", client: "ECC, GMD Jateng, Effection", platform: "Multi-platform", period: "2022-2024", category: "Photography" },
+    heroMedia: { type: 'image', src: '/thumb-freelancephoto.webp' },
+    metrics: [
+      { label: { en: "Clients/Events", id: "Klien/Event" }, value: "5+" },
+      { label: { en: "Disciplines", id: "Disiplin Ilmu" }, value: "3" },
+      { label: { en: "Content Variety", id: "Variasi Konten" }, value: "High" }
+    ],
+    overview: {
+      en: "Handled end-to-end content production and social media strategy for massive community events including Electro Charity Concert, Gerakan Mengajar Desa Jateng, and Effection Polines.",
+      id: "Menangani produksi konten dari hulu ke hilir serta strategi media sosial untuk event komunitas masif termasuk Electro Charity Concert, Gerakan Mengajar Desa Jateng, dan Effection Polines."
+    },
+    execution: [
+      {
+        title: { en: "End-to-End Production", id: "Produksi Hulu ke Hilir" },
+        desc: { en: "Managed visual direction from pre-event teasers, live documentation, to post-event recaps.", id: "Mengelola arahan visual dari teaser pra-acara, dokumentasi langsung, hingga rekap pasca-acara." },
+        visual: "/proses-freelance-1.webp"
+      }
+    ],
+    gallery: [ { type: 'image', src: '/thumb-freelancephoto.webp' } ],
     nextProject: { id: "gemini", title: "Google Gemini Promo" }
   }
 };

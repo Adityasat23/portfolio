@@ -14,11 +14,22 @@ export default function WorkPage() {
   const [activeFilter, setActiveFilter] = useState("All");
 
   // Data ini sebaiknya sama dengan data di halaman Detail nantinya
-  const projects = [
-    { id: "gemini", title: t("work.gemini.title" as any), category: "Video & Motion", role: "Video Editor", metrics: "21.7M+ Views", thumb: "/thumb-gemini45.png" },
-    { id: "timephoria", title: t("work.timephoria.title" as any), category: "UI/UX & Web", role: "UI Designer & Dev", metrics: "20% Efficiency", thumb: "/thumb-timephoria.jpg" },
-    { id: "nore", title: t("work.nore.title" as any), category: "Graphic & Photo", role: "Content Specialist", metrics: "310% Growth", thumb: "/thumb-nore.jpg" },
-    /*{ id: "unreal", title: "Interactive 3D Game", category: "3D Design", role: "UE5 Developer", metrics: "Gold Medalist", thumb: "/thumb-unreal.jpg" }*/
+const projects = [
+    // TIER 1: FEATURED
+    { id: "gemini", title: "Google Gemini × Gracia Caroline", category: "Video & Motion", role: "Video Editor", metrics: "21.7M+ Views", thumb: "/thumb-gemini.webp" },
+    { id: "timephoria", title: "TimePhoria Dashboard", category: "UI/UX & Web", role: "UI Designer & Dev", metrics: "20% Efficiency", thumb: "/thumb-timephoria.webp" },
+    { id: "nore", title: "CV. Nore Inovasi Scaling", category: "Content Strategy", role: "Content Specialist", metrics: "310% Growth", thumb: "/thumb-nore.webp" },
+    { id: "ob-herbal", title: "Dr. Grace × OB Herbal", category: "Video & Motion", role: "Video Editor", metrics: "Tier-1 Client", thumb: "/thumb-obherbal.webp" },
+    
+    // TIER 2: SUPPORTING
+    { id: "skintific", title: "Skintific Ad Creatives", category: "Video & Motion", role: "Creative Producer", metrics: "Performance Ad", thumb: "/thumb-skintific.webp" },
+    { id: "google-io", title: "Google I/O Promo", category: "Video & Motion", role: "Video Editor", metrics: "Tier-1 Brand", thumb: "/thumb-googleio.webp" },
+    { id: "bem", title: "BEM KBM Polines", category: "Content Strategy", role: "Media Director", metrics: "5M+ Views", thumb: "/thumb-bem.webp" },
+    { id: "unreal", title: "Interactive 3D Game", category: "3D Design", role: "UE5 Developer", metrics: "Gold Medalist", thumb: "/thumb-unreal.webp" },
+    
+    // TIER 3: FREELANCE COLLECTIVE
+    { id: "freelance-motion", title: "Freelance Motion & 3D", category: "Video & Motion", role: "Freelance Creator", metrics: "5-10 Clients", thumb: "/thumb-freelancemotion.webp" },
+    { id: "freelance-photo", title: "Freelance Photo & Video", category: "Photography", role: "Freelance Creator", metrics: "5+ Clients", thumb: "/thumb-freelancephoto.webp" },
   ];
 
   const filteredProjects = projects.filter(project => 
