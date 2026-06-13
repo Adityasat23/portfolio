@@ -27,7 +27,7 @@ const projects = [
   },
   { 
     id: "timephoria", 
-    title: "TimePhoria Editor Dashboard", 
+    title: "TimePhoria Editor Tool", 
     category: "UI/UX & Web", 
     role: "UI Designer & Dev · Next.js", 
     metrics: "20% Efficiency", 
