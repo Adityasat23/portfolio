@@ -223,7 +223,7 @@ export default function Home() {
             <motion.div variants={fadeUp} className="group">
               <Link href="/work/nore" className="block space-y-4">
                 <div className="aspect-[4/5] bg-neutral-200 dark:bg-neutral-800 border border-neutral-200/50 dark:border-neutral-800/50 rounded-3xl overflow-hidden relative shadow-lg transition-transform duration-500 group-hover:-translate-y-2">
-                  {<Image src="public/thumbnails/thumb-nore.png" alt="Nore Inovasi" fill className="object-cover" />}
+                  {<Image src="/thumbnails/thumb-nore.png" alt="Nore Inovasi" fill className="object-cover" />}
                 <div className="absolute top-4 left-4 flex gap-2">
                     <span className="px-3 py-1 bg-black/60 text-white text-xs font-medium rounded-full backdrop-blur-md">Content Strategy</span>
                   </div>
