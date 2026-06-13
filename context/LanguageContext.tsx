@@ -57,7 +57,7 @@ const translations = {
     
     // Experience Data
     "exp.timephoria.role": "Creative Video Producer",
-    "exp.timephoria.desc": "Architected an internal web-based editing dashboard, reducing per-video post-production time by 20% (60 to 50 min). Produced retention-driven TikTok ad campaigns.",
+    "exp.timephoria.desc": "Architected an internal web based editing, reducing per video post production time by 20% (60 to 50 min). Produced retention-driven TikTok ad campaigns.",
     "exp.angkasa.role": "Video Editor",
     "exp.angkasa.desc": "Edited 10+ performance campaigns for Tier 1 clients (Google Gemini, OB Herbal) totaling 21.7M+ views. Engineered platform-native pacing optimizing hook effectiveness.",
     "exp.nore.role": "PIC Creative Content Specialist",
@@ -66,7 +66,7 @@ const translations = {
     // Selected Works Data
     "work.gemini.title": "Google Gemini Campaign",
     "work.gemini.desc": "Video Editor • 21.7M+ Views",
-    "work.timephoria.title": "TimePhoria Dashboard",
+    "work.timephoria.title": "TimePhoria Editor Tools Web",
     "work.timephoria.desc": "UI/UX & Frontend Development",
     "work.nore.title": "Nore Inovasi Scaling",
     "work.nore.desc": "Content Strategy • 310% Growth",
@@ -127,7 +127,7 @@ const translations = {
     
     // Experience Data
     "exp.timephoria.role": "Produser Video Kreatif",
-    "exp.timephoria.desc": "Membangun arsitektur dashboard editing internal berbasis web, mengurangi waktu pasca-produksi per video sebesar 20% (60 ke 50 menit). Memproduksi kampanye iklan TikTok berfokus pada retensi.",
+    "exp.timephoria.desc": "Membangun website editing internal berbasis web, mengurangi waktu pasca produksi per video sebesar 20% (60 ke 50 menit). Memproduksi kampanye iklan TikTok berfokus pada retensi.",
     "exp.angkasa.role": "Video Editor",
     "exp.angkasa.desc": "Mengedit 10+ kampanye digital untuk klien Tier 1 (Google Gemini, OB Herbal) dengan total 21.7M+ penayangan. Merancang pacing video adaptif untuk memaksimalkan retensi.",
     "exp.nore.role": "Spesialis Konten Kreatif",
@@ -136,7 +136,7 @@ const translations = {
     // Selected Works Data
     "work.gemini.title": "Kampanye Google Gemini",
     "work.gemini.desc": "Video Editor • 21.7M+ Penayangan",
-    "work.timephoria.title": "Dashboard TimePhoria",
+    "work.timephoria.title": "TimePhoria Editor Tools Web",
     "work.timephoria.desc": "UI/UX & Pengembangan Frontend",
     "work.nore.title": "Pertumbuhan Nore Inovasi",
     "work.nore.desc": "Strategi Konten • Pertumbuhan 310%",
