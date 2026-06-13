@@ -188,7 +188,7 @@ export default function Home() {
               <Link href="/work/gemini" className="block space-y-4">
                 <div className="aspect-[4/5] bg-neutral-200 dark:bg-neutral-800 border border-neutral-200/50 dark:border-neutral-800/50 rounded-3xl overflow-hidden relative shadow-lg transition-transform duration-500 group-hover:-translate-y-2">
                   {/* WAJIB GANTI src DI BAWAH INI DENGAN GAMBAR ASLI ANDA */}
-                  {<Image src="/thumbnails/thumb-gemini-916.webp" alt="Google Gemini" fill className="object-cover" />}
+                  {<Image src="/thumbnails/thumb-gemini-916.png" alt="Google Gemini" fill className="object-cover" />}
                   {/* Category Badge & 1 Impact Metric */}
                   <div className="absolute top-4 left-4 flex gap-2">
                     <span className="px-3 py-1 bg-black/60 text-white text-xs font-medium rounded-full backdrop-blur-md">Video Editor</span>

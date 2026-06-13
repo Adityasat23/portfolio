@@ -15,22 +15,82 @@ export default function WorkPage() {
 
   // Data ini sebaiknya sama dengan data di halaman Detail nantinya
 const projects = [
-    // TIER 1: FEATURED
-    { id: "gemini", title: "Google Gemini × Gracia Caroline", category: "Video & Motion", role: "Video Editor", metrics: "21.7M+ Views", thumb: "/thumb-gemini.webp" },
-    { id: "timephoria", title: "TimePhoria Dashboard", category: "UI/UX & Web", role: "UI Designer & Dev", metrics: "20% Efficiency", thumb: "/thumb-timephoria.webp" },
-    { id: "nore", title: "CV. Nore Inovasi Scaling", category: "Content Strategy", role: "Content Specialist", metrics: "310% Growth", thumb: "/thumb-nore.webp" },
-    { id: "ob-herbal", title: "Dr. Grace × OB Herbal", category: "Video & Motion", role: "Video Editor", metrics: "Tier-1 Client", thumb: "/thumb-obherbal.webp" },
-    
-    // TIER 2: SUPPORTING
-    { id: "skintific", title: "Skintific Ad Creatives", category: "Video & Motion", role: "Creative Producer", metrics: "Performance Ad", thumb: "/thumb-skintific.webp" },
-    { id: "google-io", title: "Google I/O Promo", category: "Video & Motion", role: "Video Editor", metrics: "Tier-1 Brand", thumb: "/thumb-googleio.webp" },
-    { id: "bem", title: "BEM KBM Polines", category: "Content Strategy", role: "Media Director", metrics: "5M+ Views", thumb: "/thumb-bem.webp" },
-    { id: "unreal", title: "Interactive 3D Game", category: "3D Design", role: "UE5 Developer", metrics: "Gold Medalist", thumb: "/thumb-unreal.webp" },
-    
-    // TIER 3: FREELANCE COLLECTIVE
-    { id: "freelance-motion", title: "Freelance Motion & 3D", category: "Video & Motion", role: "Freelance Creator", metrics: "5-10 Clients", thumb: "/thumb-freelancemotion.webp" },
-    { id: "freelance-photo", title: "Freelance Photo & Video", category: "Photography", role: "Freelance Creator", metrics: "5+ Clients", thumb: "/thumb-freelancephoto.webp" },
-  ];
+  // --- TIER 1: FEATURED (Impact Terbesar) ---
+  { 
+    id: "gemini", 
+    title: "Google Gemini × Gracia Caroline", 
+    category: "Video & Motion", 
+    role: "Video Editor · Google Indonesia", 
+    metrics: "21.7M+ Views", 
+    thumb: "/thumbnails/thumb-gemini-45.png",
+    badges: ["Tier-1", "TikTok Ads"]
+  },
+  { 
+    id: "timephoria", 
+    title: "TimePhoria Editor Dashboard", 
+    category: "UI/UX & Web", 
+    role: "UI Designer & Dev · Next.js", 
+    metrics: "20% Efficiency", 
+    thumb: "/thumbnails/thumb-timephoria-45.png", // Siapkan gambar ini nanti
+    badges: ["Internal Tool", "Updated"]
+  },
+  { 
+    id: "nore", 
+    title: "CV. Nore Inovasi Scaling", 
+    category: "Content Strategy", 
+    role: "Content Specialist · Team Lead", 
+    metrics: "310% YoY Growth", 
+    thumb: "/thumbnails/thumb-nore-45.png", 
+    badges: ["Data-driven", "Lead"]
+  },
+  { 
+    id: "ob-herbal", 
+    title: "Dr. Grace × OB Herbal", 
+    category: "Video & Motion", 
+    role: "Video Editor · Health Campaign", 
+    metrics: "Tier-1 Client", 
+    thumb: "/thumbnails/thumb-obherbal-45.png", 
+    badges: ["Performance Creative"]
+  },
+
+  // --- TIER 2: SUPPORTING (Konteks Penting) ---
+  { 
+    id: "bem", 
+    title: "BEM KBM Polines Digital", 
+    category: "Content Strategy", 
+    role: "Media Director · Institutional Branding", 
+    metrics: "5M+ Total Views", 
+    thumb: "/thumbnails/thumb-bem-45.png" 
+  },
+  { 
+    id: "unreal", 
+    title: "Interactive 3D Game (UE5)", 
+    category: "3D Design", 
+    role: "UE5 Developer · Game Design", 
+    metrics: "Gold Medalist", 
+    thumb: "/thumbnails/thumb-unreal-45.png" 
+  },
+
+  // --- TIER 3: FREELANCE COLLECTIVE (Digabung agar tidak penuh) ---
+  { 
+    id: "freelance-motion", 
+    title: "Freelance — Motion & Branding", 
+    category: "Video & Motion", 
+    role: "Motion Graphics · Logo · Brand Visual", 
+    metrics: "5-10 Clients", 
+    thumb: "/thumbnails/thumb-freelance-motion.png",
+    badges: ["Freelance"] 
+  },
+  { 
+    id: "freelance-photo", 
+    title: "Freelance — Photo & Videography", 
+    category: "Photography", 
+    role: "Event · Product Shoot", 
+    metrics: "5+ Clients", 
+    thumb: "/thumbnails/thumb-freelance-photo.png",
+    badges: ["Freelance"]
+  }
+];
 
   const filteredProjects = projects.filter(project => 
     activeFilter === "All" ? true : project.category === activeFilter

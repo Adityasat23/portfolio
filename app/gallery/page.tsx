@@ -1,59 +1,101 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
+import { X } from "lucide-react"; // Pastikan sudah install lucide-react
+
+// DATA MASTER GALLERY
+const galleryItems = [
+  { id: 1, src: "/thumbnails/thumb-gemini-916.webp", category: "Video & Motion", alt: "Gemini Vertical Edit", format: "aspect-[9/16]" },
+  { id: 2, src: "/thumbnails/thumb-gemini-45.png", category: "Video & Motion", alt: "Gemini Promo", format: "aspect-[4/5]" },
+  // Tambahkan foto/desain Anda di sini... contoh:
+  // { id: 3, src: "/gallery/foto-event.jpg", category: "Photography", alt: "Event Shoot", format: "aspect-[3/2]" },
+  // { id: 4, src: "/gallery/logo-design.png", category: "Design", alt: "Logo Brand", format: "aspect-square" },
+];
+
+const categories = ["All", "Video & Motion", "Photography", "Design", "3D & Render"];
 
 export default function GalleryPage() {
-  const { language } = useLanguage();
+  const [activeTab, setActiveTab] = useState("All");
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
-  // Data contoh untuk galeri (Bisa dicampur foto, desain UI, dan render 3D)
-  const galleryItems = [
-    { src: "/thumb-gemini.webp", alt: "Gemini", aspect: "aspect-[4/5]" },
-    { src: "/thumb-nore.webp", alt: "Nore", aspect: "aspect-[3/4]" },
-    { src: "/thumb-timephoria.webp", alt: "Timephoria", aspect: "aspect-square" },
-    { src: "/thumb-unreal.webp", alt: "Unreal Engine", aspect: "aspect-video" },
-    // Tambahkan gambar freelance Anda di sini sebanyak-banyaknya...
-  ];
+  // Filter logika
+  const filteredItems = activeTab === "All" 
+    ? galleryItems 
+    : galleryItems.filter(item => item.category === activeTab);
 
   return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-[#050505] pt-32 pb-24 px-6 md:px-12 font-sans transition-colors duration-300">
-      <main className="max-w-7xl mx-auto space-y-12">
+    <div className="min-h-screen bg-neutral-50 dark:bg-[#050505] pt-32 pb-24 px-6 md:px-12 transition-colors duration-300">
+      <main className="max-w-7xl mx-auto space-y-10">
         
-        <div className="max-w-2xl space-y-4">
+        {/* Header & Filter */}
+        <div className="space-y-8">
           <h1 className="text-4xl md:text-5xl font-medium text-neutral-900 dark:text-neutral-100 tracking-tight">
             Visual Archive
           </h1>
-          <p className="text-neutral-500 dark:text-neutral-400 text-lg">
-            {language === 'en' 
-              ? "A visual archive of edits, motion, photography, and creative work — things that don't fit neatly into a case study." 
-              : "Arsip visual karya editan, motion, fotografi, dan konten kreatif di luar format case study."}
-          </p>
+          
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveTab(cat)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeTab === cat 
+                    ? "bg-neutral-900 text-white dark:bg-white dark:text-black" 
+                    : "bg-neutral-200/50 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800/50 dark:text-neutral-400 dark:hover:bg-neutral-800"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Masonry Layout (Pinterest Style) */}
+        {/* Masonry Grid (Enteng via CSS Columns) */}
         <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-          {galleryItems.map((item, index) => (
-            <div key={index} className={`relative w-full ${item.aspect} bg-neutral-200 dark:bg-neutral-900 rounded-2xl overflow-hidden break-inside-avoid group border border-neutral-200/50 dark:border-neutral-800/50`}>
-              {/* Jika menggunakan gambar asli, hapus komentar di bawah ini */}
-              {/* <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" /> */}
-              
-              <div className="absolute inset-0 flex items-center justify-center text-sm text-neutral-500">Upload {item.src}</div>
-              
+          {filteredItems.map((item) => (
+            <div 
+              key={item.id} 
+              onClick={() => setLightboxImage(item.src)}
+              className={`relative w-full ${item.format} bg-neutral-200 dark:bg-neutral-900 rounded-2xl overflow-hidden break-inside-avoid group cursor-zoom-in`}
+            >
+              {/* Gunakan tag <img> biasa atau <Image> Next.js */}
+              <Image 
+                src={item.src} 
+                alt={item.alt} 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
             </div>
           ))}
         </div>
-
-        {/* Behance CTA */}
-        <div className="pt-16 flex justify-center border-t border-neutral-200 dark:border-neutral-800">
-          <a href="https://behance.net/aditysat" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-8 py-4 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium rounded-full hover:scale-105 transition-transform">
-            View Full Portfolio on Behance <ArrowUpRight className="w-5 h-5" />
-          </a>
-        </div>
-
       </main>
+
+      {/* LIGHTBOX MODAL (Interaktif Pop-up) */}
+      {lightboxImage && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-12 backdrop-blur-sm"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button 
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <div className="relative w-full max-w-5xl h-full flex items-center justify-center">
+             <Image 
+                src={lightboxImage} 
+                alt="Enlarged" 
+                fill 
+                className="object-contain" 
+                sizes="100vw"
+             />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
