@@ -65,11 +65,11 @@ const translations = {
     
     // Selected Works Data
     "work.gemini.title": "Google Gemini Campaign",
-    "work.gemini.desc": "Video Editor • 21.7M+ Views",
+    "work.gemini.desc": "Video Editor &middot; 21.7M+ Views",
     "work.timephoria.title": "TimePhoria Editor Tools Web",
     "work.timephoria.desc": "UI/UX & Frontend Development",
     "work.nore.title": "Nore Inovasi Scaling",
-    "work.nore.desc": "Content Strategy • 310% Growth",
+    "work.nore.desc": "Content Strategy &middot; 310% Growth",
 
     // Footer
     "footer.title": "Let's build scalable creative operations.",
@@ -135,11 +135,11 @@ const translations = {
     
     // Selected Works Data
     "work.gemini.title": "Kampanye Google Gemini",
-    "work.gemini.desc": "Video Editor • 21.7M+ Penayangan",
+    "work.gemini.desc": "Video Editor &middot; 21.7M+ Penayangan",
     "work.timephoria.title": "TimePhoria Editor Tools Web",
     "work.timephoria.desc": "UI/UX & Pengembangan Frontend",
     "work.nore.title": "Pertumbuhan Nore Inovasi",
-    "work.nore.desc": "Strategi Konten • Pertumbuhan 310%",
+    "work.nore.desc": "Strategi Konten &middot; Pertumbuhan 310%",
 
     // Footer
     "footer.title": "Mari bangun operasi kreatif yang terukur.",
