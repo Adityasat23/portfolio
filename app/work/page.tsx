@@ -49,7 +49,7 @@ const projects = [
     category: "Video & Motion", 
     role: "Video Editor · Health Campaign", 
     metrics: "Tier-1 Client", 
-    thumb: "/thumbnails/thumb-obherbal-45.png", 
+    thumb: "/thumbnails/thumb-obh-45.png", 
     badges: ["Performance Creative"]
   },
 
@@ -68,7 +68,7 @@ const projects = [
     category: "3D Design", 
     role: "UE5 Developer · Game Design", 
     metrics: "Gold Medalist", 
-    thumb: "/thumbnails/thumb-unreal-45.png" 
+    thumb: "/thumbnails/thumb-ue-45.png" 
   },
 
   // --- TIER 3: FREELANCE COLLECTIVE (Digabung agar tidak penuh) ---
