@@ -35,7 +35,23 @@ const projectsData: Record<string, any> = {
         visual: "/proses-gemini-2.webp" 
       }
     ],
-    gallery: [ { type: 'image', src: '/thumb-gemini.webp' } ],
+    gallery: [ 
+      { 
+        type: 'image', 
+        src: '/thumbnails/thumb-gemini-916.webp',
+        link: 'https://www.instagram.com/reel/DKo3PvwOYT7/' // 👈 Tambahkan link videonya di sini
+      },
+      { 
+        type: 'image', 
+        src: '/thumbnails/thumb-gemini-916.webp',
+        link: 'https://www.instagram.com/reel/DTm_5CsEmcl/' // 👈 Tambahkan link videonya di sini
+      },
+      { 
+        type: 'image', 
+        src: '/thumbnails/thumb-gemini-916.webp',
+        link: 'https://www.instagram.com/reel/DU23-z1DVKf/' // 👈 Tambahkan link videonya di sini
+      },
+    ],  
     nextProject: { id: "timephoria", title: "TimePhoria Dashboard" }
   },
 
@@ -268,29 +284,59 @@ export default function ProjectDetail() {
           </div>
         </section>
 
-        {/* OUTPUT GALLERY (F) */}
-        <section className="space-y-8 border-t border-neutral-200 dark:border-neutral-800 pt-16">
-          <h2 className="text-2xl font-medium text-neutral-900 dark:text-neutral-100">
-            {language === 'en' ? 'Final Output' : 'Hasil Akhir'}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {project.gallery.map((media: any, index: number) => (
-              <div key={index} className="relative aspect-square md:aspect-[4/5] bg-neutral-200 dark:bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg group">
-  
-                {/* MASUKKAN IMAGE DI SINI, HAPUS DIV TULISAN UPLOAD SEBELUMNYA */}
+    {/* OUTPUT GALLERY */}
+      <section className="space-y-8 border-t border-neutral-200 dark:border-neutral-800 pt-16">
+        <h2 className="text-2xl font-medium text-neutral-900 dark:text-neutral-100">
+          {language === 'en' ? 'Final Output' : 'Hasil Akhir'}
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {project.gallery.map((media: any, index: number) => {
+            
+            // Isi konten visualnya
+            const MediaContent = (
+              <div className="relative aspect-[9/16] bg-neutral-200 dark:bg-neutral-800 rounded-3xl overflow-hidden group border border-neutral-200/50 dark:border-neutral-800/50 shadow-sm">
                 <Image 
                   src={media.src} 
                   alt="Gallery Output" 
                   fill 
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/10 transition-colors">
-                   <Maximize className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
+                
+                {/* Jika ada link, tampilkan Ikon Play dan efek gelap saat di-hover */}
+                {media.link && (
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                    <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                      {/* Ikon Play murni menggunakan SVG */}
+                      <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
-        </section>
+            );
+
+            // Jika properti link diisi, bungkus dengan tag <a> agar bisa di-klik
+            return media.link ? (
+              <a 
+                key={index} 
+                href={media.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block"
+                title="Watch Original Video"
+              >
+                {MediaContent}
+              </a>
+            ) : (
+              // Jika tidak ada link, tampilkan sebagai gambar biasa
+              <div key={index}>
+                {MediaContent}
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
         {/* NEXT PROJECT LINK (G) */}
         <div className="pt-16 pb-12 flex justify-center">
