@@ -72,7 +72,7 @@ const projects = [
   },
 
   // --- TIER 3: FREELANCE COLLECTIVE (Digabung agar tidak penuh) ---
-  { 
+  /*{ 
     id: "freelance-motion", 
     title: "Freelance — Motion & Branding", 
     category: "Video & Motion", 
@@ -89,7 +89,7 @@ const projects = [
     metrics: "5+ Clients", 
     thumb: "/thumbnails/thumb-freelance-photo.png",
     badges: ["Freelance"]
-  }
+  }*/
 ];
 
   const filteredProjects = projects.filter(project => 

@@ -52,25 +52,37 @@ export default function GalleryPage() {
         </div>
 
         {/* Masonry Grid (Enteng via CSS Columns) */}
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-          {filteredItems.map((item) => (
+        {/* Masonry Grid (Otomatis deteksi rasio + Efek Hover Responsive) */}
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+        {filteredItems.map((item) => (
+          <div 
+            key={item.id} 
+            onClick={() => setLightboxImage(item.src)}
+            className="break-inside-avoid mb-4 relative rounded-2xl overflow-hidden group cursor-zoom-in border border-neutral-200/50 dark:border-neutral-800/50 shadow-sm bg-neutral-100 dark:bg-neutral-900"
+          >
+            {/* 1. Gambar Asli (Tinggi menyesuaikan otomatis) */}
+            <img 
+              src={item.src} 
+              alt={item.alt} 
+              className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" 
+            />
+
+            {/* 2. OVERLAY TEKS (Gradient & Detail Foto) */}
             <div 
-              key={item.id} 
-              onClick={() => setLightboxImage(item.src)}
-              className={`relative w-full ${item.format} bg-neutral-200 dark:bg-neutral-900 rounded-2xl overflow-hidden break-inside-avoid group cursor-zoom-in`}
+              className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
+                        opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
             >
-              {/* Gunakan tag <img> biasa atau <Image> Next.js */}
-              <Image 
-                src={item.src} 
-                alt={item.alt} 
-                fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+              <span className="text-white/80 text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-1">
+                {item.category}
+              </span>
+              <h3 className="text-white text-sm sm:text-base font-medium leading-tight">
+                {item.alt}
+              </h3>
             </div>
-          ))}
-        </div>
+
+          </div>
+        ))}
+      </div>
       </main>
 
       {/* LIGHTBOX MODAL (Interaktif Pop-up) */}
