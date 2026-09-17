@@ -78,7 +78,7 @@ export default function AboutPage() {
                 href="/documents/cv-aditya.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                download="CV_Aditya_Satria_Pratama.pdf" 
+                download="documents/cv-aditya.pdf" 
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-950 font-medium rounded-full hover:scale-105 transition-transform duration-300 shadow-md"
               >
                 <Download className="w-4 h-4" /> {t("btn.download" as any)}
