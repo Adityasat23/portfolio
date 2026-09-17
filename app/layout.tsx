@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { LanguageProvider } from "@/context/LanguageContext"; // Import Provider Bahasa
+import { ThemeProvider } from "@/components/ThemeProvider";
+import ClientLayout from "./ClientLayout";
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 
@@ -16,13 +14,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans bg-neutral-50 dark:bg-[#050505] overflow-x-hidden`}>
+      <body className={`${inter.variable} font-sans bg-neutral-50 dark:bg-[#050505] overflow-x-hidden`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <LanguageProvider> {/* Bungkus aplikasi dengan LanguageProvider */}
-            <Navbar />
+          <ClientLayout>
             {children}
-            <Footer />
-          </LanguageProvider>
+          </ClientLayout>
         </ThemeProvider>
       </body>
     </html>

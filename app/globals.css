@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tailwindcss";
 
 /* FIX: Tell Tailwind v4 to trigger dark mode when next-themes adds the .dark class */
 @custom-variant dark (&:is(.dark *));
@@ -56,4 +55,12 @@
 /* Versi Dark Mode */
 .dark .placeholder-thumbnail {
   background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+}
+/* Hide scrollbar for sliders */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }

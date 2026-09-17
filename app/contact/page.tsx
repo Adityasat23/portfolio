@@ -79,11 +79,11 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-xs font-semibold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">{t("contact.form.name" as any)}</label>
-                <input type="text" required className="w-full px-4 py-3 bg-neutral-100/50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 rounded-xl focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors text-sm" placeholder="John Doe" />
+                <input type="text" required className="w-full px-4 py-3 bg-neutral-100/50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 rounded-xl focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors text-sm" placeholder="Hi You!" />
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-semibold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">{t("contact.form.email" as any)}</label>
-                <input type="email" required className="w-full px-4 py-3 bg-neutral-100/50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 rounded-xl focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors text-sm" placeholder="john@company.com" />
+                <input type="email" required className="w-full px-4 py-3 bg-neutral-100/50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 rounded-xl focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors text-sm" placeholder="HiYou@mail.com" />
               </div>
             </div>
             

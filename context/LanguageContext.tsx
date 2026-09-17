@@ -14,13 +14,31 @@ const translations = {
     
     
     // Home Page - Hero
-    "hero.title": "Aditya Satria Pratama — Creative Video Producer & Systems Builder", // NEW
-    "hero.desc": "Bridging high-performance video production with data-driven systems thinking.", // NEW
+    "hero.title": "Aditya Satria Pratama — Digital Content Specialist",
+    "hero.desc": "I create and edit digital content across video, social media, advertising, and AI-assisted production. My work spans commercial campaigns, KOL content, UGC, product videos, and performance creative.",
     "btn.explore": "Explore Selected Works",
     "btn.download": "Download CV",
+    
+    // Stats Strip
+    "stat.brandsProjects": "Top Brands",
+    "stat.minVideo": "Total Views",
+    "stat.yoy": "Videos Edited",
+    "stat.growth": "YoY Growth",
+
+    // Status Availability
+    "status.available": "Open to creative opportunities",
+    "status.unavailable": "Currently unavailable",
+    
+    // Home Page - Sections
+    "section.exp": "Professional Experience",
+    "section.exp.desc": "My journey across content, video, and creative production.",
+    "section.work": "Selected Works",
+    "section.work.viewAll": "View all projects",
+    "section.achievements": "Key Achievements", 
+
     // About Page
-    "about.role": "Creative Technologist",
-    "about.intro": "I'm a creative technologist bridging high-performance video production with systems thinking. My background in Informatics shapes how I approach editing timelines — not just as aesthetic choices, but as measurable audience retention structures that drive business conversion.",
+    "about.role": "Digital Content Specialist",
+    "about.intro": "My background sits between creative production and technology. I started with a foundation in Informatics and built my experience through content, video editing, social media, and commercial campaigns.\n\nToday, I work across video production, TikTok advertising, UGC, AI-assisted content, and creative tools - combining hands-on production with a practical approach to improving how creative work gets done.",
     "about.skills": "Skills & Tools",
     "about.org": "Leadership & Organizations",
     "about.edu": "Education & Achievements",
@@ -38,75 +56,70 @@ const translations = {
     "contact.form.message": "Message",
     "contact.form.submit": "Send Message",
     "contact.reply": "I typically reply within 24–48 hours.",
-
-// Stats Strip
-    "stat.views": "Views",
-    "stat.growth": "Influencer",
-    "stat.brands": "Tier-1 Brands",
-
-    // Status Availability
-    "status.available": "Open for work",
-    "status.unavailable": "Currently unavailable",
-    
-    // Home Page - Sections
-    "section.exp": "Professional Experience",
-    "section.exp.desc": "A timeline of operational integration and creative execution.",
-    "section.work": "Selected Works",
-    "section.work.viewAll": "View all projects",
-    "section.achievements": "Key Achievements", // NEW
     
     // Experience Data
-    "exp.timephoria.role": "Creative Video Producer",
-    "exp.timephoria.desc": "Architected an internal web based editing, reducing per video post production time by 20% (60 to 50 min). Produced retention-driven TikTok ad campaigns.",
+    "exp.timephoria.role": "Creative Video Editor",
+    "exp.timephoria.desc": "Built an internal web-based editing tool that reduced average post-production time from 60 to 50 minutes per video. Produced and edited TikTok ads across UGC, product, branded, and AI-assisted content.",
     "exp.angkasa.role": "Video Editor",
-    "exp.angkasa.desc": "Edited 10+ performance campaigns for Tier 1 clients (Google Gemini, OB Herbal) totaling 21.7M+ views. Engineered platform-native pacing optimizing hook effectiveness.",
+    "exp.angkasa.desc": "Edited commercial and short-form video content for brands including Google Gemini and OB Herbal, as well as KOL-led campaigns across multiple consumer brands.",
     "exp.nore.role": "PIC Creative Content Specialist",
-    "exp.nore.desc": "Promoted from intern to team lead. Scaled Instagram performance to 200K+ views and 148K+ reach, driving 310.9% YoY growth.",
+    "exp.nore.desc": "Promoted from intern to team lead. Grew Instagram content to 200K+ views and 148K+ reach, contributing to 310.9% YoY growth.",
     
     // Selected Works Data
     "work.gemini.title": "Google Gemini Campaign",
-    "work.gemini.desc": "Video Editor &middot; 21.7M+ Views",
-    "work.timephoria.title": "TimePhoria Editor Tools Web",
-    "work.timephoria.desc": "UI/UX & Frontend Development",
-    "work.nore.title": "Nore Inovasi Scaling",
-    "work.nore.desc": "Content Strategy &middot; 310% Growth",
+    "work.gemini.desc": "Student Promo",
+    "work.timephoria.title": "TimePhoria TikTok Ads",
+    "work.timephoria.desc": "Performance & UGC",
+    "work.nore.title": "Skintific Content & Ads",
+    "work.nore.desc": "TikTok Production",
 
     // Footer
     "footer.title": "Let's build scalable creative operations.",
-    "footer.rights": "All rights reserved."
+    "footer.rights": "All rights reserved.",
+
+    // Achievements
+    "achieve.1.title": "Multi-Brand Commercial Work",
+    "achieve.1.desc": "Google · OB Herbal · Skintific · SilverQueen · Runable · Gooday",
+    "achieve.2.title": "Ongoing KOL Campaigns",
+    "achieve.2.desc": "Gracia Caroline - Multi-Brand Content",
+    "achieve.3.title": "Performance & AI Creative",
+    "achieve.3.desc": "UGC · TikTok Ads · AI Video · Product Content",
+    "achieve.4.title": "End-to-End Content Production",
+    "achieve.4.desc": "Editing · Creative · UI/UX · Web"
   },
   id: {
     "nav.home": "Beranda",
     "nav.work": "Karya",
     "nav.about": "Tentang",
     "nav.contact": "Kontak",
-    "nav.hire": "Rekrut saya", // NEW
+    "nav.hire": "Rekrut saya", 
     
     // Home Page - Hero
-    "hero.title": "Aditya Satria Pratama — Produser Video Kreatif & Pembangun Sistem", // NEW
-    "hero.desc": "Produksi konten performa tinggi dengan pendekatan berbasis data dan sistem.", // NEW
+    "hero.title": "Aditya Satria Pratama — Spesialis Konten Digital",
+    "hero.desc": "Saya memproduksi dan mengedit konten digital mulai dari video, media sosial, periklanan, hingga produksi berbasis AI. Pekerjaan saya mencakup kampanye komersial, konten KOL, UGC, video produk, dan materi kreatif performa.",
     "btn.explore": "Jelajahi Karya",
     "btn.download": "Unduh CV",
     
-// Stats Strip
-    "stat.views": "Penayangan",
-    "stat.growth": "Influencer",
-    "stat.brands": "Klien Tier-1",
+    // Stats Strip
+    "stat.brandsProjects": "Top Brands",
+    "stat.minVideo": "Total Penayangan",
+    "stat.yoy": "Video Diedit",
+    "stat.growth": "Pertumbuhan YoY",
 
     // Status Availability
-    "status.available": "Tersedia untuk proyek",
+    "status.available": "Terbuka untuk peluang kreatif",
     "status.unavailable": "Saat ini tidak tersedia",
     
     // Home Page - Sections
     "section.exp": "Pengalaman Profesional",
-    "section.exp.desc": "Lini masa integrasi operasional dan eksekusi kreatif.",
+    "section.exp.desc": "Perjalanan saya melintasi produksi konten, video, dan kreatif.",
     "section.work": "Karya Pilihan",
     "section.work.viewAll": "Lihat semua proyek",
-    "section.achievements": "Pencapaian Utama", // NEW
+    "section.achievements": "Pencapaian Utama", 
 
     // About Page
-    "about.role": "Teknolog Kreatif",
-    "about.intro": "Saya adalah seorang teknolog kreatif yang menjembatani produksi video performa tinggi dengan pemikiran sistem. Latar belakang saya di bidang Informatika membentuk cara saya menyusun timeline editing — bukan sekadar pilihan estetika, melainkan sebagai struktur retensi audiens terukur yang mendorong konversi bisnis.",
+    "about.role": "Spesialis Konten Digital",
+    "about.intro": "Latar belakang saya berada di antara produksi kreatif dan teknologi. Saya memulai dengan fondasi di bidang Informatika dan membangun pengalaman saya melalui konten, video editing, media sosial, dan kampanye komersial.\n\nSaat ini, saya bekerja memproduksi video, iklan TikTok, UGC, konten berbasis AI, dan alat kreatif - menggabungkan produksi praktis dengan pendekatan inovatif untuk meningkatkan cara kerja kreatif.",
     "about.skills": "Keahlian & Alat",
     "about.org": "Kepemimpinan & Organisasi",
     "about.edu": "Pendidikan & Pencapaian",
@@ -126,24 +139,34 @@ const translations = {
     "contact.reply": "Saya biasanya membalas dalam waktu 24–48 jam.",
     
     // Experience Data
-    "exp.timephoria.role": "Produser Video Kreatif",
-    "exp.timephoria.desc": "Membangun website editing internal berbasis web, mengurangi waktu pasca produksi per video sebesar 20% (60 ke 50 menit). Memproduksi kampanye iklan TikTok berfokus pada retensi.",
+    "exp.timephoria.role": "Creative Video Editor",
+    "exp.timephoria.desc": "Membangun alat editing internal berbasis web yang memangkas rata-rata waktu pasca-produksi dari 60 menjadi 50 menit per video. Memproduksi dan mengedit iklan TikTok yang mencakup konten UGC, produk, branding, dan berbasis AI.",
     "exp.angkasa.role": "Video Editor",
-    "exp.angkasa.desc": "Mengedit 10+ kampanye digital untuk klien Tier 1 (Google Gemini, OB Herbal) dengan total 21.7M+ penayangan. Merancang pacing video adaptif untuk memaksimalkan retensi.",
-    "exp.nore.role": "Spesialis Konten Kreatif",
-    "exp.nore.desc": "Promosi dari pemagang menjadi ketua tim. Meningkatkan performa Instagram hingga 200K+ penayangan dan jangkauan 148K+, mendorong pertumbuhan 310.9% YoY.",
+    "exp.angkasa.desc": "Mengedit konten video komersial dan format pendek untuk berbagai brand termasuk Google Gemini dan OB Herbal, serta kampanye berbasis KOL di berbagai brand konsumen.",
+    "exp.nore.role": "PIC Spesialis Konten Kreatif",
+    "exp.nore.desc": "Dipromosikan dari pemagang menjadi ketua tim. Mengembangkan konten Instagram hingga mencapai 200K+ penayangan dan 148K+ jangkauan, berkontribusi pada pertumbuhan 310.9% YoY.",
     
     // Selected Works Data
     "work.gemini.title": "Kampanye Google Gemini",
-    "work.gemini.desc": "Video Editor &middot; 21.7M+ Penayangan",
-    "work.timephoria.title": "TimePhoria Editor Tools Web",
-    "work.timephoria.desc": "UI/UX & Pengembangan Frontend",
-    "work.nore.title": "Pertumbuhan Nore Inovasi",
-    "work.nore.desc": "Strategi Konten &middot; Pertumbuhan 310%",
+    "work.gemini.desc": "Promo Mahasiswa",
+    "work.timephoria.title": "Iklan TikTok TimePhoria",
+    "work.timephoria.desc": "Performa & UGC",
+    "work.nore.title": "Konten & Iklan Skintific",
+    "work.nore.desc": "Produksi TikTok",
 
     // Footer
     "footer.title": "Mari bangun operasi kreatif yang terukur.",
-    "footer.rights": "Hak cipta dilindungi undang-undang."
+    "footer.rights": "Hak cipta dilindungi undang-undang.",
+
+    // Achievements
+    "achieve.1.title": "Komersial Multi-Brand",
+    "achieve.1.desc": "Google, OB Herbal, Skintific, SilverQueen, Runable, Gooday, dll",
+    "achieve.2.title": "Kampanye KOL Aktif",
+    "achieve.2.desc": "Gracia Caroline, Dr Grace, berbagai KOL",
+    "achieve.3.title": "Kreatif Performa & AI",
+    "achieve.3.desc": "UGC, Iklan TikTok, Video AI, Konten Produk",
+    "achieve.4.title": "Produksi Konten Menyeluruh",
+    "achieve.4.desc": "Editing, Produksi, Kreatif, UI/UX, Web"
   }
 };
 

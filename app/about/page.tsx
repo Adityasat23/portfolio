@@ -16,7 +16,7 @@ export default function AboutPage() {
   const experiences = [
     {
       date: "Dec 2025 - Present",
-      company: "TimePhoria - Skintific",
+      company: "TimePhoria",
       role: t("exp.timephoria.role" as any),
       desc: t("exp.timephoria.desc" as any)
     },
