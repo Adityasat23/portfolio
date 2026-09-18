@@ -130,9 +130,18 @@ export default function WorkDetailClient({ project }: { project: any }) {
 
         {project.gallery && project.gallery.length > 0 && (
           <section className="space-y-8 border-t border-neutral-200 dark:border-neutral-800 pt-16">
-            <h2 className="text-2xl font-medium text-neutral-900 dark:text-neutral-100">
-              {language === 'en' ? 'Final Output' : 'Hasil Akhir'}
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-medium text-neutral-900 dark:text-neutral-100">
+                {language === 'en' ? 'Final Output' : 'Hasil Akhir'}
+              </h2>
+              {project.gallery.length > 2 && (
+                <div className="flex items-center gap-2 text-xs md:text-sm text-neutral-500 bg-neutral-100 dark:bg-neutral-800 px-3 py-1.5 rounded-full">
+                  <span className="hidden sm:inline">{language === 'en' ? 'Swipe to explore' : 'Geser untuk melihat'}</span>
+                  <span className="sm:hidden">{language === 'en' ? 'Swipe' : 'Geser'}</span>
+                  <ArrowRight className="w-4 h-4 animate-pulse" />
+                </div>
+              )}
+            </div>
             <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar -mx-6 px-6 md:-mx-12 md:px-12">
               {project.gallery.map((media: any, index: number) => {
                 
