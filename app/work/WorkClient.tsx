@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
-const categories = ["All", "Video & Motion", "Graphic & Photo", "UI/UX & Web", "3D Design", "Content Strategy", "Photography"];
+const categories = ["All", "Commercial", "UGC", "Product", "AI Video", "Social Content", "UI/UX"];
 
 export default function WorkClient({ projects }: { projects: any[] }) {
   const { language, t } = useLanguage();
@@ -55,7 +55,7 @@ export default function WorkClient({ projects }: { projects: any[] }) {
                 key={project.id}
               >
                 <Link href={`/work/${project.id}`} className="group block space-y-4">
-                  <div className="relative aspect-[4/3] bg-neutral-200 dark:bg-neutral-800 border border-neutral-200/50 dark:border-neutral-800/50 rounded-3xl overflow-hidden shadow-lg flex items-center justify-center transition-all duration-500 group-hover:-translate-y-2">
+                  <div className="relative aspect-[4/5] bg-neutral-200 dark:bg-neutral-800 border border-neutral-200/50 dark:border-neutral-800/50 rounded-3xl overflow-hidden shadow-lg flex items-center justify-center transition-all duration-500 group-hover:-translate-y-2">
                     
                     {project.thumb && (
                       <Image 

@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 import WorkClient from "./WorkClient";
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -10,11 +11,15 @@ export default async function WorkPage() {
     category,
     role,
     "metrics": metricsTitle,
-    "thumb": thumb.asset->url,
+    "thumb": thumb,
     badges
   }`;
   
-  const projects = await client.fetch(query);
+  const rawProjects = await client.fetch(query);
+  const projects = rawProjects.map((proj: any) => ({
+    ...proj,
+    thumb: proj.thumb ? urlForImage(proj.thumb).url() : null
+  }));
 
   return <WorkClient projects={projects} />;
 }
